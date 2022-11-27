@@ -4,19 +4,26 @@ import Categories from '../components/Categories'
 import Deals from '../components/Deals'
 import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
+import dynamic from 'next/dynamic'
+
+
+
+
 
 type ProductsProps = {
   products: any
 }
 
 export default function Home({ products }: ProductsProps) {
+
+  
   return (
     <div>
       <Header />
       <HeroBanner />
       <div className='sm:px-14 px-4'>
-        <Categories />
-        <Deals />
+        <Categories products={products}/>
+        <Deals products={products} />
       </div>
       
       
