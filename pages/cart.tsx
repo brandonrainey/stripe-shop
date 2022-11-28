@@ -5,6 +5,9 @@ export default function cart() {
   return (
     <div>
         <Header />
+        <div>
+          <p>Your Cart</p>
+        </div>
     </div>
   )
 }
