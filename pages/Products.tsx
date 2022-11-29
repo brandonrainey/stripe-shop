@@ -59,7 +59,7 @@ export default function Products({ products }: ProductsProps) {
                 </div>
 
                 <button
-                  className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm"
+                  className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                   onClick={() => addItemToCart(index)}
                 >
                   add to cart

@@ -49,7 +49,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
@@ -67,7 +67,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
@@ -85,7 +85,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
@@ -103,7 +103,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
@@ -121,7 +121,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
@@ -139,7 +139,7 @@ function makeArray() {
             
           </div>
 
-          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm">
+          <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             add to cart
           </button>
         </div>
