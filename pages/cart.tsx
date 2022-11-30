@@ -5,19 +5,30 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromCart, selectItems, selectTotal } from '../slices/cartSlice'
 import { loadStripe } from '@stripe/stripe-js'
-
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
 
 
 const stripePromise = loadStripe(process.env.stripe_public_key)
 
-
-
 export default function cart() {
   const items = useSelector(selectItems)
   const total = useSelector(selectTotal)
+  const session = useSession()
 
-  function createCheckoutSession() {
+  async function createCheckoutSession() {
+    const stripe = await stripePromise
 
+    const checkoutSession = await axios.post('/api/create-checkout-session', {
+      items: items,
+      email: session?.data?.user?.email,
+    })
+
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    })
+
+    if (result?.error.message) alert(result.error.message)
   }
 
   const MAX_RATING = 5
@@ -33,7 +44,7 @@ export default function cart() {
     <div>
       <Header />
       <p>{items.length === 0 ? 'Your Cart Is Empty' : ''}</p>
-      <div className='flex flex-col gap-y-4'>
+      <div className="flex flex-col gap-y-4">
         {items.map((item: any, index: number) => (
           <div className="flex" key={index}>
             <div className="w-1/2 h-full flex justify-center bg-white px-2">
@@ -77,8 +88,10 @@ export default function cart() {
       </div>
       {/*  */}
       <div>
-                    {total}
-                    <button role='link' onClick={() => createCheckoutSession()}>Checkout</button>
+        {total}
+        <button role="link" onClick={() => createCheckoutSession()}>
+          Checkout
+        </button>
       </div>
     </div>
   )
