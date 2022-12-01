@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import mensTP from '../public/mens-tp.png'
 
 type ProductsProps = {
   products: any
@@ -14,9 +15,9 @@ export default function Categories({ products }: ProductsProps) {
           <div className="flex  flex-col  sm:h-72 w-40 sm:w-56 border rounded-lg bg-[#d79715] justify-around items-center ">
             <p className="pb-2  text-white text-lg font-semibold">MENS</p>
             <Image
-              src={'/mens-tp.png'}
-              height={120}
+              src={mensTP}
               width={120}
+              
               alt="category image"
               className="bg-transparent"
             />
