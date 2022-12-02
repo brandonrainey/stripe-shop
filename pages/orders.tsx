@@ -4,13 +4,15 @@ import React from 'react'
 import Header from '../components/Header'
 import  db  from '../firebase'
 import moment from 'moment'
-import { collection, doc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, collectionGroup, orderBy, query, where } from 'firebase/firestore'
 
 type OrdersProps = {
   orders: any
 }
 
 export default function orders({ orders }: OrdersProps) {
+
+  console.log(orders)
   return (
     <div>
       <Header />
@@ -51,12 +53,23 @@ export async function getServerSideProps(context: any) {
     }
   }
 
-  console.log(session)
+  
 
-  const stripeOrders = await collection(db, 'users').doc(session?.user?.email).collection('orders').orderBy('timestamp', 'desc').get()
+  // const stripeOrders = await collection(db, 'users').doc(session?.user?.email).collection('orders').orderBy('timestamp', 'desc').get()
+
+//   const stripeOrders = doc(db, `users/${session?.user?.email}/`)
+
+//  const stripeSnap = await getDocs(collectionGroup(db, 'orders'), where('users', '==', session?.user?.email))
+
+ const docRef = doc(db, 'users', session?.user?.email)
+  const docSnap = await getDocs(collection(docRef, 'orders'))
+
+ 
+
+ 
 
   const orders = await Promise.all(
-    stripeOrders.docs.map(async (order: any) => ({
+    docSnap.docs.map(async (order: any) => ({
       id: order.id,
       amount: order.data().images,
       amountShipping: order.data().amount_shipping,
