@@ -34,7 +34,7 @@ function makeArray() {
   return (
     <div className="w-full mt-12 flex flex-col mb-4">
       <p className="text-2xl font-semibold ml-12">Best Deals For You</p>
-      <ScrollContainer className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" hideScrollbars={false}>
+      <ScrollContainer className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-blue-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" hideScrollbars={false}>
         <div className="flex flex-col w-full h-80 gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px]">
           <Image
             src={products[0].image}

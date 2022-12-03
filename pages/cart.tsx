@@ -43,11 +43,14 @@ export default function cart() {
   return (
     <div>
       <Header />
-      <p>{items.length === 0 ? 'Your Cart Is Empty' : ''}</p>
+      <p className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${items.length === 0 ? '' : 'hidden'}`}><span className='text-xl font-semibold'>{items.length === 0 ? 'Your Cart Is Empty' : ''}</span></p>
+      <p className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${items.length === 0 ? 'hidden' : ''}`}>
+        Your Cart
+      </p>
       <div className="flex flex-col gap-y-4">
         {items.map((item: any, index: number) => (
-          <div className="flex" key={index}>
-            <div className="w-1/2 h-full flex justify-center bg-white px-2">
+          <div className="flex items-center" key={index}>
+            <div className="w-1/2 h-full flex justify-center items-center bg-white px-2">
               <Image
                 src={item.image}
                 height={120}
@@ -87,9 +90,9 @@ export default function cart() {
         ))}
       </div>
       {/*  */}
-      <div>
-        {total}
-        <button role="link" onClick={() => createCheckoutSession()}>
+      <div className={`flex flex-col justify-center`}>
+        <p className={`${items.length === 0 ? 'hidden' : ''} text-lg pt-2 pl-2 font-semibold bg-[#f6f6f6]`}>Total - ${total}</p>
+        <button role="link" onClick={() => createCheckoutSession()} className={`${items.length === 0 ? 'hidden' : ''} mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}>
           Checkout
         </button>
       </div>

@@ -1,43 +1,33 @@
-
-import { getSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
 import React from 'react'
 import Header from '../components/Header'
-import  db  from '../firebase'
+import db from '../firebase'
 import moment from 'moment'
-import { collection, doc, getDoc, getDocs, collectionGroup, orderBy, query, where } from 'firebase/firestore'
+import { collection, doc, getDocs } from 'firebase/firestore'
+import Order from '../components/Order'
 
 type OrdersProps = {
   orders: any
 }
 
 export default function orders({ orders }: OrdersProps) {
+  const session = useSession()
 
-  console.log(orders)
   return (
-    <div>
+    <div className='flex flex-col'>
       <Header />
-      <p>Your Orders</p>
-      <div  className='flex flex-col'>
-        <div className='flex'>
-          <div className='flex flex-col'>
-            <p>ORDER PLACED</p>
-            <p>date</p>
-          </div>
-          <div className='flex flex-col'>
-            <p>TOTAL</p>
-            <p>price</p>
-          </div>
-
-          <div>
-            <p>ORDER number</p>
-            <p>items</p>
-          </div>
+      <p className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
+        Your Orders
+      </p>
+      {session.data == null ? (
+        <div className='bg-[#f6f6f6] h-24 w-11/12 sm:w-3/4 text-lg sm:text-xl flex items-center justify-center self-center shadow-lg'><p>Please Sign In to view your orders.</p></div>
+      ) : (
+        <div className="flex flex-col items-center gap-4">
+          {orders.map((order: any, index: number) => (
+            <Order order={orders[index]} key={index} />
+          ))}
         </div>
-
-        <div>
-          images
-        </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -49,35 +39,23 @@ export async function getServerSideProps(context: any) {
 
   if (!session) {
     return {
-      props: {}
+      props: {},
     }
   }
 
-  
-
-  // const stripeOrders = await collection(db, 'users').doc(session?.user?.email).collection('orders').orderBy('timestamp', 'desc').get()
-
-//   const stripeOrders = doc(db, `users/${session?.user?.email}/`)
-
-//  const stripeSnap = await getDocs(collectionGroup(db, 'orders'), where('users', '==', session?.user?.email))
-
- const docRef = doc(db, 'users', session?.user?.email)
+  const docRef = doc(db, 'users', session?.user?.email!)
   const docSnap = await getDocs(collection(docRef, 'orders'))
-
- 
-
- 
 
   const orders = await Promise.all(
     docSnap.docs.map(async (order: any) => ({
       id: order.id,
-      amount: order.data().images,
+      amount: order.data().amount,
       amountShipping: order.data().amount_shipping,
       images: order.data().images,
       timestamp: moment(order.data().timestamp.toDate()).unix(),
       items: (
         await stripe.checkout.sessions.listLineItems(order.id, {
-          limit: 100
+          limit: 100,
         })
       ).data,
     }))
@@ -86,6 +64,6 @@ export async function getServerSideProps(context: any) {
   return {
     props: {
       orders,
-    }
+    },
   }
 }

@@ -19,6 +19,8 @@ export default function Products({ products }: ProductsProps) {
     dispatch(addToCart(products[index]))
   }
 
+
+  console.log(products)
   return (
     <div className="flex flex-col justify-center">
       <Header />
