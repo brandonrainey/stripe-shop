@@ -15,20 +15,42 @@ type ProductsProps = {
 
 export default function Deals({ products }: ProductsProps) {
 
-const MAX_RATING = 5
-const MIN_RATING = 1
+  const [dealsArray, setDealsArray] = useState<any>([])
 
-function makeArray() {
-  Array(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
-      MIN_RATING
-  )
-    .fill(undefined)
-    .map((_, index) => (
-      <StarIcon className="h-5 text-yellow-300" key={index}/>
-    ))
+const MAX_RATING = 50
+const MIN_RATING = 10
+
+function makeDealsArray() {
+  let array = [...products]
+  const index_upper = 19
+  const index_lower = 0
+
+  for (let i = 0; i <= 5; i++) {
+    console.log(i)
+   let newDeal = array[Math.floor(Math.random() * (index_upper - index_lower + 1)) +
+      index_lower]
+
+    let discount = Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
+    MIN_RATING
+
+      newDeal.price = newDeal.price * (discount / 100)
+
+      newDeal.discount = discount
+
+      // console.log(newDeal)
+
+      setDealsArray((dealsArray: any) => [...dealsArray, newDeal])
+  }
 }
 
+
+
+useEffect(() => {
+  console.log('runs')
+  makeDealsArray()
+}, [])
+
+// console.log(dealsArray)
   
   //map a deals array
   return (
@@ -46,7 +68,9 @@ function makeArray() {
           <p className="font-semibold text-medium">{products[0].title}</p>
           <p className="text-xs line-clamp-2 ">{products[0].description}</p>
           <div className="flex">
-            
+            <p>{`-${dealsArray[0]?.discount}%`}</p>
+            <p className='line-through'>100</p>
+            <p>60</p>
           </div>
 
           <button className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
