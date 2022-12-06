@@ -43,7 +43,7 @@ export default function Category({ products }: ProductsProps) {
         }
         let array = products.filter((product: any) => product.category == name)
         setCategoryArray(array)
-    }, [])
+    }, [category])
     
   return (
     <div>

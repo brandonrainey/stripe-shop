@@ -2,11 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
 type ItemsState = {
-    items: any
+    items: any,
+    deals: any,
+    dealItems: any
 }
 
 const initialState: ItemsState = {
     items: [],
+    deals: false,
+    dealItems: []
 }
 
 export const cartSlice = createSlice({
@@ -28,12 +32,20 @@ export const cartSlice = createSlice({
 
             state.items = newCart
         },
+        setDeals: (state, action: PayloadAction<any>) => {
+            state.deals = action.payload
+        },
+        setDealItems: (state, action: PayloadAction<any>) => {
+            state.dealItems = [...state.items, action.payload]
+        }
     },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, setDeals, setDealItems } = cartSlice.actions
 
 export const selectItems = (state: RootState) => state.cart.items
 export const selectTotal = (state: RootState) => state.cart.items.reduce((total: any, item: any) => total + item.price, 0)
+export const selectDeals = (state: RootState) => state.cart.deals
+export const selectDealItems = (state: RootState) => state.cart.dealItems
 
 export default cartSlice.reducer

@@ -56,16 +56,16 @@ export default function cart() {
                 height={120}
                 width={120}
                 alt="product image"
-                className="self-center "
+                className="self-center min-w-[80px]"
               />
             </div>
-            <div className="flex flex-col w-full bg-[#f6f6f6] p-1 rounded-lg">
-              <div className="flex w-full  ">
+            <div className="flex flex-col w-3/4 sm:w-full bg-[#f6f6f6] p-1 rounded-lg sm:h-40">
+              <div className="flex w-full">
                 <p className="font-semibold text-medium mr-6">{item.title}</p>
-                <p className="ml-auto text-2xl font-bold">${item.price}</p>
+                <p className="ml-auto text-2xl font-bold">${item.discountedPrice?.toFixed(2) || item.price}</p>
               </div>
 
-              <p className="text-xs line-clamp-2 ">{item.description}</p>
+              <p className="text-xs line-clamp-2 mt-auto">{item.description}</p>
               <div className="flex ">
                 {Array(
                   Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
@@ -90,7 +90,7 @@ export default function cart() {
         ))}
       </div>
       {/*  */}
-      <div className={`flex flex-col justify-center`}>
+      <div className={`flex flex-col justify-center mt-4 mb-4`}>
         <p className={`${items.length === 0 ? 'hidden' : ''} text-lg pt-2 pl-2 font-semibold bg-[#f6f6f6]`}>Total - ${total}</p>
         <button role="link" onClick={() => createCheckoutSession()} className={`${items.length === 0 ? 'hidden' : ''} mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}>
           Checkout
