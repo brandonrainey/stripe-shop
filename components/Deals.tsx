@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { StarIcon } from '@heroicons/react/24/solid'
+
 import ScrollContainer from 'react-indiana-drag-scroll'
-import dynamic from 'next/dynamic'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, setDeals, selectDeals, setDealItems, selectDealItems } from '../slices/cartSlice'
+import {
+  addToCart,
+  setDeals,
+  selectDeals,
+  setDealItems,
+  selectDealItems,
+} from '../slices/cartSlice'
 
 type ProductsProps = {
   products: any
 }
-
-
 
 export default function Deals({ products }: ProductsProps) {
   const dispatch = useDispatch()
@@ -20,59 +24,98 @@ export default function Deals({ products }: ProductsProps) {
   const activeDeals = useSelector(selectDeals)
 
   function addItemToCart(index: any) {
-    dispatch(addToCart(dealsArray[index]))
+    dispatch(addToCart(activeDealItems[index]))
   }
-
-  const [dealsArray, setDealsArray] = useState<any>([])
-
-  const [indexArray, setIndexArray] = useState<any>([])
 
   const MAX_RATING = 50
   const MIN_RATING = 10
 
-  function makeDealsArray() {
+  function makeNewDealsArray() {
     let array = [...products]
-    const index_upper = 19
-    const index_lower = 0
 
-    for (let i = 0; i <= 5; i++) {
-      let newDeal =
-        array[
-          Math.floor(Math.random() * (index_upper - index_lower + 1)) +
-            index_lower
-        ]
+    // first deal
+    let indexOne = Math.floor(Math.random() * (3 - 0 + 1)) + 0
 
-      let discount =
-        Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+    let dealOne = array[indexOne]
 
-      newDeal.discountedPrice = newDeal.price - newDeal.price * (discount / 100)
+    let discount =
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
 
-      newDeal.discount = discount
+    dealOne.discountedPrice = dealOne.price - dealOne.price * (discount / 100)
 
-      setDealsArray((dealsArray: any) => [...dealsArray, newDeal])
-      
-    }
+    dealOne.discount = discount
+
+    dispatch(setDealItems(dealOne))
+
+    // second deal
+    let indexTwo = Math.floor(Math.random() * (7 - 4 + 1)) + 4
+
+    let dealTwo = array[indexTwo]
+
+    discount =
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+
+    dealTwo.discountedPrice = dealTwo.price - dealTwo.price * (discount / 100)
+
+    dealTwo.discount = discount
+
+    dispatch(setDealItems(dealTwo))
+
+    // third deal
+    let indexThree = Math.floor(Math.random() * (11 - 8 + 1)) + 8
+
+    let dealThree = array[indexThree]
+
+    discount =
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+
+    dealThree.discountedPrice =
+      dealThree.price - dealThree.price * (discount / 100)
+
+    dealThree.discount = discount
+
+    dispatch(setDealItems(dealThree))
+
+    // fourth deal
+    let indexFour = Math.floor(Math.random() * (15 - 12 + 1)) + 12
+
+    let dealFour = array[indexFour]
+
+    discount =
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+
+    dealFour.discountedPrice =
+      dealFour.price - dealFour.price * (discount / 100)
+
+    dealFour.discount = discount
+
+    dispatch(setDealItems(dealFour))
+
+    // fifth deal
+    let indexFive = Math.floor(Math.random() * (19 - 16 + 1)) + 16
+
+    let dealFive = array[indexFive]
+
+    discount =
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+
+    dealFive.discountedPrice =
+      dealFive.price - dealFive.price * (discount / 100)
+
+    dealFive.discount = discount
+
+    dispatch(setDealItems(dealFive))
   }
 
-  
-
   useEffect(() => {
-    
-    
-
     if (!activeDeals) {
-      
-      makeDealsArray()
-      
-      
+      makeNewDealsArray()
     }
 
-    // dispatch(setDeals(true))
-    dispatch(setDealItems(dealsArray))
-    
+    dispatch(setDeals(true))
   }, [])
 
-  console.log(activeDealItems)
+ 
 
   return (
     <div className="w-full mt-12 flex flex-col mb-4">
@@ -81,7 +124,7 @@ export default function Deals({ products }: ProductsProps) {
         className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-blue-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
         hideScrollbars={false}
       >
-        {dealsArray.map((item: any, index: any) => (
+        {activeDealItems.map((item: any, index: any) => (
           <div
             className="flex flex-col w-full h-[340px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px]"
             key={index}
@@ -96,12 +139,12 @@ export default function Deals({ products }: ProductsProps) {
             <p className="font-semibold text-medium">{item.title}</p>
             <p className="text-xs line-clamp-2">{item.description}</p>
             <div className="flex gap-x-2 items-center justify-center">
-              <p className="text-xl font-bold text-red-600">{`-${item?.discount}%`}</p>
+              <p className="text-lg font-bold text-red-600">{`-${item?.discount}%`}</p>
               <p className="line-through text-sm text-slate-500">
-                ${item.price.toFixed(2)}
+                ${item.price?.toFixed(2)}
               </p>
               <p className="text-lg font font-semibold ">
-                ${item.discountedPrice.toFixed(2)}
+                ${item.discountedPrice?.toFixed(2)}
               </p>
             </div>
 

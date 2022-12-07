@@ -7,48 +7,47 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../slices/cartSlice'
 
 type ProductsProps = {
-    products: any
-  }
+  products: any
+}
 
-  const MAX_RATING = 5
-  const MIN_RATING = 1
+const MAX_RATING = 5
+const MIN_RATING = 1
 
 export default function Category({ products }: ProductsProps) {
-    const router = useRouter()
-    const { category } = router.query
-    const [categoryArray, setCategoryArray] = useState([])
+  const router = useRouter()
+  const { category } = router.query
+  const [categoryArray, setCategoryArray] = useState([])
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   function addItemToCart(index: any) {
     dispatch(addToCart(products[index]))
   }
 
-    
-    useEffect(() => {
-        let name = ''
-        switch (category) {
-            case 'mens':
-                name = "men's clothing"
-                break;
-            case 'womens':
-                name = "women's clothing"
-                break;
-            case 'jewelery':
-                name = "jewelery"
-                break;
-            case 'electronics':
-                name = "electronics"
-                break;
-        }
-        let array = products.filter((product: any) => product.category == name)
-        setCategoryArray(array)
-    }, [category])
-    
+  useEffect(() => {
+    let name = ''
+    switch (category) {
+      case 'mens':
+        name = "men's clothing"
+        break
+      case 'womens':
+        name = "women's clothing"
+        break
+      case 'jewelery':
+        name = 'jewelery'
+        break
+      case 'electronics':
+        name = 'electronics'
+        break
+    }
+    let array = products.filter((product: any) => product.category == name)
+    setCategoryArray(array)
+  }, [category])
+
   return (
     <div>
-        <Header />
-        <p className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</p>
+      <Header />
+      <p className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categoryArray.map((product: any, index: any) => (
           <div className="flex justify-center ">
@@ -98,15 +97,13 @@ export default function Category({ products }: ProductsProps) {
 }
 
 export async function getServerSideProps(context: any) {
-    const products = await fetch('https://fakestoreapi.com/products').then(
-      (res) => res.json()
-    )
+  const products = await fetch('https://fakestoreapi.com/products').then(
+    (res) => res.json()
+  )
 
-    
-  
-    return {
-      props: {
-        products,
-      },
-    }
+  return {
+    props: {
+      products,
+    },
   }
+}

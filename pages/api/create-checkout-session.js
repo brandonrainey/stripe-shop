@@ -7,7 +7,9 @@ export default async (req, res) => {
     quantity: 1,
     price_data: {
       currency: 'usd',
-      unit_amount: item.discountedPrice ? item.discountedPrice.toFixed(2) * 100 : item.price * 100,
+      unit_amount: item.discountedPrice
+        ? item.discountedPrice.toFixed(2) * 100
+        : item.price * 100,
       product_data: {
         name: item.title,
         images: [item.image],
@@ -43,8 +45,6 @@ export default async (req, res) => {
       images: JSON.stringify(items.map((item) => item.image)),
     },
   })
-
-  
 
   res.status(200).json({ id: session.id })
 }

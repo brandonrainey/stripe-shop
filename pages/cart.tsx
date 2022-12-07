@@ -8,7 +8,6 @@ import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 
-
 const stripePromise = loadStripe(process.env.stripe_public_key)
 
 export default function cart() {
@@ -43,8 +42,20 @@ export default function cart() {
   return (
     <div>
       <Header />
-      <p className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${items.length === 0 ? '' : 'hidden'}`}><span className='text-xl font-semibold'>{items.length === 0 ? 'Your Cart Is Empty' : ''}</span></p>
-      <p className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${items.length === 0 ? 'hidden' : ''}`}>
+      <p
+        className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${
+          items.length === 0 ? '' : 'hidden'
+        }`}
+      >
+        <span className="text-xl font-semibold">
+          {items.length === 0 ? 'Your Cart Is Empty' : ''}
+        </span>
+      </p>
+      <p
+        className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${
+          items.length === 0 ? 'hidden' : ''
+        }`}
+      >
         Your Cart
       </p>
       <div className="flex flex-col gap-y-4">
@@ -62,7 +73,9 @@ export default function cart() {
             <div className="flex flex-col w-3/4 sm:w-full bg-[#f6f6f6] p-1 rounded-lg sm:h-40">
               <div className="flex w-full">
                 <p className="font-semibold text-medium mr-6">{item.title}</p>
-                <p className="ml-auto text-2xl font-bold">${item.discountedPrice?.toFixed(2) || item.price}</p>
+                <p className="ml-auto text-2xl font-bold">
+                  ${item.discountedPrice?.toFixed(2) || item.price}
+                </p>
               </div>
 
               <p className="text-xs line-clamp-2 mt-auto">{item.description}</p>
@@ -91,8 +104,20 @@ export default function cart() {
       </div>
       {/*  */}
       <div className={`flex flex-col justify-center mt-4 mb-4`}>
-        <p className={`${items.length === 0 ? 'hidden' : ''} text-lg pt-2 pl-2 font-semibold bg-[#f6f6f6]`}>Total - ${total}</p>
-        <button role="link" onClick={() => createCheckoutSession()} className={`${items.length === 0 ? 'hidden' : ''} mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}>
+        <p
+          className={`${
+            items.length === 0 ? 'hidden' : ''
+          } text-lg pt-2 pl-2 font-semibold bg-[#f6f6f6]`}
+        >
+          Total - ${total}
+        </p>
+        <button
+          role="link"
+          onClick={() => createCheckoutSession()}
+          className={`${
+            items.length === 0 ? 'hidden' : ''
+          } mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}
+        >
           Checkout
         </button>
       </div>

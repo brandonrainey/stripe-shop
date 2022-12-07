@@ -14,13 +14,15 @@ export default function orders({ orders }: OrdersProps) {
   const session = useSession()
 
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <Header />
       <p className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
         Your Orders
       </p>
       {session.data == null ? (
-        <div className='bg-[#f6f6f6] h-24 w-11/12 sm:w-3/4 text-lg sm:text-xl flex items-center justify-center self-center shadow-lg'><p>Please Sign In to view your orders.</p></div>
+        <div className="bg-[#f6f6f6] h-24 w-11/12 sm:w-3/4 text-lg sm:text-xl flex items-center justify-center self-center shadow-lg">
+          <p>Please Sign In to view your orders.</p>
+        </div>
       ) : (
         <div className="flex flex-col items-center gap-4">
           {orders.map((order: any, index: number) => (

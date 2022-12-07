@@ -1,33 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { selectDealItems, addToCart } from '../slices/cartSlice'
+import { useSelector, useDispatch } from 'react-redux'
 import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../slices/cartSlice'
-
-type ProductsProps = {
-  products: any
-}
 
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-export default function Products({ products }: ProductsProps) {
+export default function deals() {
   const dispatch = useDispatch()
+  const deals = useSelector(selectDealItems)
 
   function addItemToCart(index: any) {
-    dispatch(addToCart(products[index]))
+    dispatch(addToCart(deals[index]))
   }
 
-  console.log(products)
   return (
-    <div className="flex flex-col justify-center">
-      <Header />
-      {/* filter bubbles */}
-      <div></div>
-      <p className="text-3xl font-bold pl-6 pt-6">All Products</p>
+    <div>
+      <Header products={undefined} />
+      <p className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {products.map((product: any, index: any) => (
+        {deals.map((product: any, index: any) => (
           <div className="flex justify-center ">
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
@@ -44,7 +38,17 @@ export default function Products({ products }: ProductsProps) {
                   <p className="font-semibold text-medium mr-6">
                     {product.title}
                   </p>
-                  <p className="ml-auto text-2xl font-bold">${product.price}</p>
+                  <div className="flex flex-col ml-auto">
+                    <p className="ml-auto text-2xl font-bold">
+                      ${product.discountedPrice.toFixed(2)}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-lg font-bold text-red-600">{`-${product?.discount}%`}</p>
+                      <p className="line-through text-sm text-slate-500">
+                        ${product.price?.toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <p className="text-xs line-clamp-2 ">{product.description}</p>
@@ -72,16 +76,4 @@ export default function Products({ products }: ProductsProps) {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  const products = await fetch('https://fakestoreapi.com/products').then(
-    (res) => res.json()
-  )
-
-  return {
-    props: {
-      products,
-    },
-  }
 }
