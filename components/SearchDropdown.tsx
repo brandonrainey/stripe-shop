@@ -9,10 +9,10 @@ export default function SearchDropdown({ filteredProducts, searchInput }: Search
 
     
 
-  return searchInput != '' ? (
-    <div className='absolute flex flex-col h-auto w-full z-40 bg-white border top-9 rounded-lg'>
-        {filteredProducts.map((item: any) => (
-            <div className='bg-white p-1 truncate'>{item.title}</div>
+  return searchInput?.length > 0 ? (
+    <div className={`absolute flex flex-col h-auto w-full z-40 bg-white shadow-md border rounded-lg top-[32px]  `}>
+        {filteredProducts?.map((item: any) => (
+            <div className='bg-white p-1 truncate rounded-lg hover:bg-slate-200 cursor-pointer text-sm'>{item.title}</div>
         ))}
     </div>
   ) : null

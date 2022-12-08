@@ -37,11 +37,12 @@ export default function Header({ products }: HeaderProps) {
     const localSearch = e.target.value
     const copyArr = [...products]
     const filtered = copyArr.filter((item) => {
-      return item.title.includes(localSearch.toLowerCase())
+      return item.title.toLowerCase().includes(localSearch.toLowerCase())
     })
 
     setFilteredProducts([...filtered])
   }
+  
   
 
   return (
