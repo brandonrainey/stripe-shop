@@ -10,7 +10,7 @@ type OrdersProps = {
   orders: any
 }
 
-export default function orders({ orders }: OrdersProps) {
+export default function Orders({ orders }: OrdersProps) {
   const session = useSession()
 
   return (

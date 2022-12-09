@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/react'
 
 const stripePromise = loadStripe(process.env.stripe_public_key)
 
-export default function cart() {
+export default function Cart() {
   const items = useSelector(selectItems)
   const total = useSelector(selectTotal)
   const session = useSession()
@@ -86,7 +86,7 @@ export default function cart() {
                 )
                   .fill(undefined)
                   .map((_, index) => (
-                    <StarIcon className="h-5 text-yellow-300" />
+                    <StarIcon className="h-5 text-yellow-300" key={index}/>
                   ))}
               </div>
             </div>

@@ -8,7 +8,7 @@ import { StarIcon } from '@heroicons/react/24/solid'
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-export default function deals() {
+export default function Deals() {
   const dispatch = useDispatch()
   const deals = useSelector(selectDealItems)
 

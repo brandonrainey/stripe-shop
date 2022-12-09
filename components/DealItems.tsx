@@ -16,7 +16,7 @@ type ProductsProps = {
   products: any
 }
 
-export default function Deals({ products }: ProductsProps) {
+export default function DealItems({ products }: ProductsProps) {
   const dispatch = useDispatch()
 
   const activeDealItems = useSelector(selectDealItems)

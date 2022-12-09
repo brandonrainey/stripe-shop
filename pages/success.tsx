@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Header from '../components/Header'
 
-export default function () {
+export default function Success() {
   const router = useRouter()
 
   return (
