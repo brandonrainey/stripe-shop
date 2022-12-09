@@ -26,7 +26,7 @@ export default function Header({ products }: HeaderProps) {
   const session = useSession()
   const router = useRouter()
 
-  const [searchInput, setSearchInput] = useState()
+  const [searchInput, setSearchInput] = useState('')
   const [filteredProducts, setFilteredProducts] = useState<any>()
 
   const [open, setOpen] = useState(false)
@@ -37,7 +37,7 @@ export default function Header({ products }: HeaderProps) {
     const localSearch = e.target.value
     const copyArr = [...products]
     const filtered = copyArr.filter((item) => {
-      return item.title.toLowerCase().includes(localSearch.toLowerCase())
+      return item.title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '').includes(localSearch.toLowerCase())
     })
 
     setFilteredProducts([...filtered])
