@@ -5,6 +5,7 @@ import Deals from '../components/Deals'
 import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
 import dynamic from 'next/dynamic'
+import ProductPage from '../components/ProductPage'
 
 type ProductsProps = {
   products: any
@@ -12,13 +13,14 @@ type ProductsProps = {
 
 export default function Home({ products }: ProductsProps) {
   return (
-    <div>
+    <div className=''>
       <Header products={products}/>
       <HeroBanner />
       <div className="sm:px-14 px-4">
         <Categories products={products} />
         <Deals products={products} />
       </div>
+      {/* <ProductPage products={products}/> */}
     </div>
   )
 }

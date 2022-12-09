@@ -47,17 +47,17 @@ export default function Header({ products }: HeaderProps) {
 
   return (
     <div className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2" onClick={() => router.push('/')}>
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
         <p className="sm:text-3xl text-xl text-center font-semibold cursor-pointer">
-          <Link href="/">My Shop</Link>
+          My Shop
         </p>
       </div>
       <nav className="flex lg:gap-6 items-center">
-        <p className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]">
-          <Link href="/Products">Shop Products</Link>
+        <p className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]" onClick={() => router.push('/Products')}>
+          Shop Products
         </p>
         <div
           className="lg:flex  items-center relative cursor-pointer hidden "
@@ -81,7 +81,8 @@ export default function Header({ products }: HeaderProps) {
         <button className="absolute right-2 top-1">
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
-        <SearchDropdown filteredProducts={filteredProducts} searchInput={searchInput}/>
+        {searchInput.length > 0 ? <SearchDropdown filteredProducts={filteredProducts} searchInput={searchInput}/> : null}
+        
       </div>
       <div
         className="flex gap-1 cursor-pointer"
@@ -90,7 +91,7 @@ export default function Header({ products }: HeaderProps) {
         <div className="sm:block hidden">
           <UserIcon className="h-6 w-6" />
         </div>
-        <p className="text-sm text-center sm:block hidden">
+        <p className="text-sm text-center sm:block hidden font-semibold">
           {session.data != null
             ? `Hello, ${session?.data?.user?.name}`
             : 'Sign In'}
@@ -108,7 +109,7 @@ export default function Header({ products }: HeaderProps) {
           {items.length}
         </span>
         <ShoppingCartIcon className="h-6 w-6" />
-        <p className="sm:block hidden">Cart</p>
+        <p className="sm:block hidden font-semibold">Cart</p>
       </div>
       <div
         className="space-y-2 lg:hidden block pr-4"

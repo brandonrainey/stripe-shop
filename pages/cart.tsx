@@ -41,7 +41,7 @@ export default function cart() {
 
   return (
     <div>
-      <Header />
+      <Header products={undefined} />
       <p
         className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${
           items.length === 0 ? '' : 'hidden'

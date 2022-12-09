@@ -115,18 +115,18 @@ export default function Deals({ products }: ProductsProps) {
     dispatch(setDeals(true))
   }, [])
 
- 
+  
 
   return (
     <div className="w-full mt-12 flex flex-col mb-4">
       <p className="text-2xl font-semibold ml-12">Best Deals For You</p>
       <ScrollContainer
-        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-blue-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
         hideScrollbars={false}
       >
         {activeDealItems.map((item: any, index: any) => (
           <div
-            className="flex flex-col w-full h-[340px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px]"
+            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] "
             key={index}
           >
             <Image
@@ -134,26 +134,29 @@ export default function Deals({ products }: ProductsProps) {
               height={120}
               width={120}
               alt="product image"
-              className="self-center"
+              className="self-center mb-auto mt-12"
             />
-            <p className="font-semibold text-medium">{item.title}</p>
-            <p className="text-xs line-clamp-2">{item.description}</p>
-            <div className="flex gap-x-2 items-center justify-center">
-              <p className="text-lg font-bold text-red-600">{`-${item?.discount}%`}</p>
-              <p className="line-through text-sm text-slate-500">
-                ${item.price?.toFixed(2)}
-              </p>
-              <p className="text-lg font font-semibold ">
-                ${item.discountedPrice?.toFixed(2)}
-              </p>
-            </div>
 
-            <button
-              className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
-              onClick={() => addItemToCart(index)}
-            >
-              add to cart
-            </button>
+            <div className={`flex flex-col  rounded-lg p-1`}>
+              <p className="font-semibold text-medium">{item.title}</p>
+              <p className="text-xs line-clamp-2">{item.description}</p>
+              <div className="flex gap-x-2 items-center justify-center">
+                <p className="text-lg font-bold text-red-600">{`-${item?.discount}%`}</p>
+                <p className="line-through text-sm text-slate-500">
+                  ${item.price?.toFixed(2)}
+                </p>
+                <p className="text-lg font font-semibold ">
+                  ${item.discountedPrice?.toFixed(2)}
+                </p>
+              </div>
+
+              <button
+                className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
+                onClick={() => addItemToCart(index)}
+              >
+                add to cart
+              </button>
+            </div>
           </div>
         ))}
       </ScrollContainer>

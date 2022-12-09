@@ -22,7 +22,7 @@ export default function deals() {
       <p className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {deals.map((product: any, index: any) => (
-          <div className="flex justify-center ">
+          <div className="flex justify-center " key={index}>
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
                 <Image
@@ -59,7 +59,7 @@ export default function deals() {
                   )
                     .fill(undefined)
                     .map((_, index) => (
-                      <StarIcon className="h-5 text-yellow-300" />
+                      <StarIcon className="h-5 text-yellow-300" key={index}/>
                     ))}
                 </div>
 

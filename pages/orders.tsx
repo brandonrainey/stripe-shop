@@ -15,7 +15,7 @@ export default function orders({ orders }: OrdersProps) {
 
   return (
     <div className="flex flex-col">
-      <Header />
+      <Header products={undefined} />
       <p className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
         Your Orders
       </p>
