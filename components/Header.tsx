@@ -16,6 +16,7 @@ import Menu from './Menu'
 import Dropdown from './Dropdown'
 import Link from 'next/link'
 import SearchDropdown from './SearchDropdown'
+import ProductPage from './ProductPage'
 
 type HeaderProps = {
   products: any
@@ -31,22 +32,28 @@ export default function Header({ products }: HeaderProps) {
 
   const [open, setOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(false)
+  const [openProductPage, setOpenProductPage] = useState(false)
+
+  const [productId, setProductId] = useState(0)
 
   function handleChange(e: any) {
     setSearchInput(e.target.value)
     const localSearch = e.target.value
     const copyArr = [...products]
     const filtered = copyArr.filter((item) => {
-      return item.title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '').includes(localSearch.toLowerCase())
+      return item.title
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, '')
+        .includes(localSearch.toLowerCase())
     })
 
     setFilteredProducts([...filtered])
   }
-  
-  
 
   return (
     <div className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
+      {openProductPage ? <ProductPage products={products} productId={productId} openProductPage={openProductPage} setOpenProductPage={setOpenProductPage}/> : null}
+      
       <div className="flex items-center gap-2" onClick={() => router.push('/')}>
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
@@ -56,19 +63,29 @@ export default function Header({ products }: HeaderProps) {
         </p>
       </div>
       <nav className="flex lg:gap-6 items-center">
-        <p className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]" onClick={() => router.push('/Products')}>
+        <p
+          className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]"
+          onClick={() => router.push('/Products')}
+        >
           Shop Products
         </p>
         <div
           className="lg:flex  items-center relative cursor-pointer hidden "
           onClick={() => setOpenDropdown(!openDropdown)}
         >
-          <p className=" font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]">Categories</p>
+          <p className=" font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]">
+            Categories
+          </p>
           <ChevronDownIcon className="h-5" />
           <Dropdown openDropdown={openDropdown} />
         </div>
 
-        <p className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1]" onClick={() => router.push('/deals')}>Deals</p>
+        <p
+          className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1]"
+          onClick={() => router.push('/deals')}
+        >
+          Deals
+        </p>
         <p
           className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]"
           onClick={() => router.push('/orders')}
@@ -77,12 +94,26 @@ export default function Header({ products }: HeaderProps) {
         </p>
       </nav>
       <div className="relative w-1/3">
-        <input className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#f3f1f1] hover:bg-[#e8e5e5]" value={searchInput} onChange={handleChange}></input>
+        <input
+          className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#f3f1f1] hover:bg-[#e8e5e5]"
+          value={searchInput}
+          onChange={handleChange}
+        ></input>
         <button className="absolute right-2 top-1">
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
-        {searchInput.length > 0 && filteredProducts != undefined ? <SearchDropdown filteredProducts={filteredProducts} searchInput={searchInput}/> : null}
-        
+        {searchInput.length > 0 && filteredProducts != undefined ? (
+          <SearchDropdown
+            filteredProducts={filteredProducts}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            productId={productId}
+            setProductId={setProductId}
+            products={products}
+            openProductPage={openProductPage}
+            setOpenProductPage={setOpenProductPage}
+          />
+        ) : null}
       </div>
       <div
         className="flex gap-1 cursor-pointer"
@@ -123,5 +154,3 @@ export default function Header({ products }: HeaderProps) {
     </div>
   )
 }
-
-

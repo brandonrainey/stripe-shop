@@ -20,7 +20,7 @@ export default function Home({ products }: ProductsProps) {
         <Categories products={products} />
         <Deals products={products} />
       </div>
-      {/* <ProductPage products={products}/> */}
+      
     </div>
   )
 }
