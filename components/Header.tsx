@@ -81,7 +81,7 @@ export default function Header({ products }: HeaderProps) {
         <button className="absolute right-2 top-1">
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
-        {searchInput.length > 0 ? <SearchDropdown filteredProducts={filteredProducts} searchInput={searchInput}/> : null}
+        {searchInput.length > 0 && filteredProducts != undefined ? <SearchDropdown filteredProducts={filteredProducts} searchInput={searchInput}/> : null}
         
       </div>
       <div
