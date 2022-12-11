@@ -98,6 +98,7 @@ export default function Header({ products }: HeaderProps) {
           className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#f3f1f1] hover:bg-[#e8e5e5]"
           value={searchInput}
           onChange={handleChange}
+          disabled={products == undefined ? true : false}
         ></input>
         <button className="absolute right-2 top-1">
           <MagnifyingGlassIcon className="h-6 w-6" />

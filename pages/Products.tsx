@@ -22,7 +22,7 @@ export default function Products({ products }: ProductsProps) {
   console.log(products)
   return (
     <div className="flex flex-col justify-center">
-      <Header products={undefined} />
+      <Header products={products} />
       {/* filter bubbles */}
       <div></div>
       <p className="text-3xl font-bold pl-6 pt-6">All Products</p>

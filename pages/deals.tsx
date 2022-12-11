@@ -5,10 +5,15 @@ import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
 
+
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-export default function Deals() {
+type DealsProps = {
+  products: any
+}
+
+export default function Deals({ products }: DealsProps) {
   const dispatch = useDispatch()
   const deals = useSelector(selectDealItems)
 
@@ -16,9 +21,11 @@ export default function Deals() {
     dispatch(addToCart(deals[index]))
   }
 
+  console.log(products)
+
   return (
     <div>
-      <Header products={undefined} />
+      <Header products={products}/>
       <p className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {deals.map((product: any, index: any) => (
@@ -76,4 +83,16 @@ export default function Deals() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps(context: any) {
+  const products = await fetch('https://fakestoreapi.com/products').then(
+    (res) => res.json()
+  )
+
+  return {
+    props: {
+      products,
+    },
+  }
 }

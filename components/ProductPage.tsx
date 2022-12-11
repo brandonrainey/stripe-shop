@@ -18,7 +18,6 @@ export default function ProductPage({
   openProductPage,
   setOpenProductPage,
 }: ProductPageProps) {
-  
   const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -39,40 +38,41 @@ export default function ProductPage({
       : window.btoa(str)
 
   return (
-    <div className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center">
-      <div className="flex bg-white h-1/2 w-2/3 mt-40 relative items-center">
-        <div className='h-[500px] w-[500px] relative'>
+    <div className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center ">
+      <div className="flex bg-white h-1/2 w-2/3 mt-40 relative items-center rounded-lg">
+        <div className="h-[500px] w-[500px] relative">
           <Image
-          src={products[productId].image}
-          className="rounded-lg object-contain"
-          fill
-          alt="product image"
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(500, 500)
-          )}`}
-          style={{
-            
-            
-          }}
-        ></Image>
+            src={products[productId].image}
+            className="rounded-lg object-contain p-1"
+            fill
+            alt="product image"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(500, 500)
+            )}`}
+            style={{}}
+          ></Image>
         </div>
-        
 
-        <div className='w-1/2'>
-          <p>{products[productId].title}</p>
-          <p>{products[productId].description}</p>
-          <div className="flex ">
-            {Array(
-              Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
-                MIN_RATING
-            )
-              .fill(undefined)
-              .map((_, index) => (
-                <StarIcon className="h-5 text-yellow-300" key={index} />
-              ))}
+        <div className="w-full flex flex-col h-full justify-center gap-y-12 bg-[#f6f6f6] rounded-lg p-2">
+          <div className="flex flex-col  rounded-lg p-1">
+            <p className="text-2xl font-semibold self-start mb-4">
+              {products[productId].title}
+            </p>
+            <p className="">{products[productId].description}</p>
+            <div className="flex ">
+              {Array(
+                Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
+                  MIN_RATING
+              )
+                .fill(undefined)
+                .map((_, index) => (
+                  <StarIcon className="h-8 text-yellow-300" key={index} />
+                ))}
+            </div>
           </div>
-          <p>{products[productId].price}</p>
+
+          <p className="text-3xl font-semibold">${products[productId].price}</p>
           <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
             Add to Cart
           </button>

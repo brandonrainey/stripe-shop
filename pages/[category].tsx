@@ -46,7 +46,7 @@ export default function Category({ products }: ProductsProps) {
 
   return (
     <div>
-      <Header products={undefined} />
+      <Header products={products} />
       <p className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categoryArray.map((product: any, index: any) => (
