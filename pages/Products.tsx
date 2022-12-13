@@ -3,7 +3,8 @@ import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../slices/cartSlice'
+import { addToCart, setOpenAlert } from '../slices/cartSlice'
+import Alert from '../components/Alert'
 
 type ProductsProps = {
   products: any
@@ -17,9 +18,10 @@ export default function Products({ products }: ProductsProps) {
 
   function addItemToCart(index: any) {
     dispatch(addToCart(products[index]))
+    dispatch(setOpenAlert(true))
   }
 
-  console.log(products)
+  
   return (
     <div className="flex flex-col justify-center">
       <Header products={products} />
@@ -70,6 +72,7 @@ export default function Products({ products }: ProductsProps) {
           </div>
         ))}
       </div>
+      <Alert />
     </div>
   )
 }

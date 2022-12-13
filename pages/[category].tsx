@@ -21,8 +21,10 @@ export default function Category({ products }: ProductsProps) {
   const dispatch = useDispatch()
 
   function addItemToCart(index: any) {
-    dispatch(addToCart(products[index]))
+    dispatch(addToCart(categoryArray[index]))
   }
+
+  console.log(products)
 
   useEffect(() => {
     let name = ''

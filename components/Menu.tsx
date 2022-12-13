@@ -39,14 +39,20 @@ export default function Menu({ open, setOpen }: MenuProps) {
           className="h-10 absolute cursor-pointer"
           onClick={() => setOpen(!open)}
         />
-        <p
-          className="text-base font-semibold ml-auto pt-2 pr-2 cursor-pointer"
-          onClick={session.data == null ? () => signIn() : () => signOut()}
+        <div className='ml-auto flex flex-col items-center'>
+          <p
+          className={`text-base font-semibold ml-auto pt-2 pr-2 ${session.data == null ? 'cursor-pointer' : ''}`}
+          onClick={session.data == null ? () => signIn() : undefined}
         >
           {session.data != null
             ? `Hello, ${session?.data?.user?.name}`
             : 'Sign In'}
         </p>
+        <p className='text-xs cursor-pointer' onClick={session.data == null ? () => signIn() : () => signOut()}>{session.data != null
+            ? `Sign Out`
+            : null}</p>
+        </div>
+        
         <p
           className=" mt-auto text-3xl p-2 font-bold cursor-pointer hover:bg-[#d7d6d6] whitespace-nowrap"
           onClick={() => handleBrowse()}
@@ -67,7 +73,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
           <ul
             className={`${
               openCategories ? '' : 'h-0 hidden'
-            } transition-all duration-300 h-40`}
+            }  h-40`}
           >
             <li
               className="pl-4 py-1 border-b hover:bg-[#f6f6f6]"
@@ -95,7 +101,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
             </li>
           </ul>
         </div>
-        <p className="border-b-2 py-2 pl-1 hover:bg-[#f6f6f6]">Deals</p>
+        <p className="border-b-2 py-2 pl-1 hover:bg-[#f6f6f6]" onClick={() => router.push('/deals')}>Deals</p>
         <p
           className="py-2 pl-1 hover:bg-[#f6f6f6]"
           onClick={() => handleOrders()}

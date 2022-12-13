@@ -5,12 +5,14 @@ type ItemsState = {
   items: any
   deals: any
   dealItems: any
+  openAlert: boolean
 }
 
 const initialState: ItemsState = {
   items: [],
   deals: false,
   dealItems: [],
+  openAlert: false,
 }
 
 export const cartSlice = createSlice({
@@ -39,10 +41,13 @@ export const cartSlice = createSlice({
     setDealItems: (state, action: PayloadAction<any>) => {
       state.dealItems = [...state.dealItems, action.payload]
     },
+    setOpenAlert: (state, action: PayloadAction<any>) => {
+      state.openAlert = action.payload
+    }
   },
 })
 
-export const { addToCart, removeFromCart, setDeals, setDealItems } =
+export const { addToCart, removeFromCart, setDeals, setDealItems, setOpenAlert } =
   cartSlice.actions
 
 export const selectItems = (state: RootState) => state.cart.items
@@ -50,5 +55,6 @@ export const selectTotal = (state: RootState) =>
   state.cart.items.reduce((total: any, item: any) => total + item.price, 0)
 export const selectDeals = (state: RootState) => state.cart.deals
 export const selectDealItems = (state: RootState) => state.cart.dealItems
+export const selectOpenAlert = (state: RootState) => state.cart.openAlert
 
 export default cartSlice.reducer

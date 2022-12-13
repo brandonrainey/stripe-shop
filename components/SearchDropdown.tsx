@@ -20,7 +20,7 @@ export default function SearchDropdown({ filteredProducts, searchInput, productI
     }
 
   return (
-    <div className={`absolute flex flex-col h-auto w-full z-40 bg-white shadow-md border rounded-lg top-[32px]  `}>
+    <div className={`absolute flex flex-col h-auto sm:w-full w-[300px] z-40 bg-white shadow-md border rounded-lg top-[32px] -right-20 sm:right-0  `}>
         {filteredProducts.map((item: any, index: any) => (
             <div className='bg-white p-1 truncate rounded-lg hover:bg-slate-200 cursor-pointer text-sm' key={index} onClick={() => handleProductId(index)}>{item.title}</div>
         ))}

@@ -23,6 +23,8 @@ export default function Deals({ products }: DealsProps) {
 
   console.log(products)
 
+  //1girl, bare shoulders, blue tongue, breasts, breath, colored tongue, glowing, grey background, hair between eyes, holding, large breasts, long hair, long tongue, open mouth, pointy ears, saliva, saliva trail, simple background, solo, tongue, snake
+
   return (
     <div>
       <Header products={products}/>

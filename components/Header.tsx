@@ -7,6 +7,7 @@ import {
 import {
   BuildingStorefrontIcon,
   ChevronDownIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/solid'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useSelector } from 'react-redux'
@@ -100,7 +101,8 @@ export default function Header({ products }: HeaderProps) {
           onChange={handleChange}
           disabled={products == undefined ? true : false}
         ></input>
-        <button className="absolute right-2 top-1">
+        {searchInput != '' ? <button className='absolute top-2 right-9' onClick={() => setSearchInput('')}><XMarkIcon className='h-5 '/></button> : null}
+        <button className="absolute right-2 top-1" >
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
         {searchInput.length > 0 && filteredProducts != undefined ? (
@@ -117,10 +119,11 @@ export default function Header({ products }: HeaderProps) {
         ) : null}
       </div>
       <div
-        className="flex gap-1 cursor-pointer"
-        onClick={session.data == null ? () => signIn() : () => signOut()}
+        className="flex flex-col gap-x-1 cursor-pointer items-center"
+        onClick={session.data == null ? () => signIn() : undefined}
       >
-        <div className="sm:block hidden">
+        <div className='flex '>
+          <div className="sm:block hidden">
           <UserIcon className="h-6 w-6" />
         </div>
         <p className="text-sm text-center sm:block hidden font-semibold">
@@ -128,6 +131,11 @@ export default function Header({ products }: HeaderProps) {
             ? `Hello, ${session?.data?.user?.name}`
             : 'Sign In'}
         </p>
+        </div>
+        <p className={`text-xs sm:block hidden`} onClick={session.data == null ? () => signIn() : () => signOut()}>{session.data != null
+            ? `Sign Out`
+            : null}</p>
+        
       </div>
       <div
         className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer"
