@@ -145,6 +145,8 @@ export default function DealItems({ products }: ProductsProps) {
               height={120}
               width={120}
               alt="product image"
+              placeholder='blur'
+              blurDataURL='/loading-icon.gif'
               className="self-center mb-auto mt-12 w-auto h-auto"
             />
 
