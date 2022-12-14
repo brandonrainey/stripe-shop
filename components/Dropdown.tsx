@@ -9,7 +9,7 @@ export default function Dropdown({ openDropdown }: DropdownProps) {
   const router = useRouter()
 
   return openDropdown ? (
-    <div
+    <nav
       className={`absolute z-30  shadow-lg bg-white w-28  top-8 right-0 rounded`}
     >
       <ul className="flex flex-col items-center h-full">
@@ -38,6 +38,6 @@ export default function Dropdown({ openDropdown }: DropdownProps) {
           electronics
         </li>
       </ul>
-    </div>
+    </nav>
   ) : null
 }

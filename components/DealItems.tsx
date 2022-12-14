@@ -129,7 +129,7 @@ export default function DealItems({ products }: ProductsProps) {
   }, [])
 
   return (
-    <div className="w-full mt-12 flex flex-col mb-4">
+    <section className="w-full mt-12 flex flex-col mb-4">
       <p className="text-2xl font-semibold ml-12">Best Deals For You</p>
       <ScrollContainer
         className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show"
@@ -164,6 +164,7 @@ export default function DealItems({ products }: ProductsProps) {
               <button
                 className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                 onClick={() => addItemToCart(index)}
+                aria-label='add to cart'
               >
                 add to cart
               </button>
@@ -171,6 +172,6 @@ export default function DealItems({ products }: ProductsProps) {
           </div>
         ))}
       </ScrollContainer>
-    </div>
+    </section>
   )
 }

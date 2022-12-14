@@ -39,6 +39,7 @@ export default function Success({ products }: SuccessProps) {
         <button
           className="w-full p-1 mt-4 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
           onClick={() => router.push('/orders')}
+          aria-label='view orders'
         >
           View Orders
         </button>

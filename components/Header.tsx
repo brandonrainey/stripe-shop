@@ -62,7 +62,7 @@ export default function Header({ products }: HeaderProps) {
   }
 
   return (
-    <div className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
+    <header className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
       {openProductPage ? (
         <ProductPage
           products={products}
@@ -117,16 +117,18 @@ export default function Header({ products }: HeaderProps) {
           value={searchInput}
           onChange={handleChange}
           disabled={products == undefined ? true : false}
+          aria-label='search bar'
         ></input>
         {searchInput != '' ? (
           <button
             className="absolute top-2 right-9"
             onClick={() => setSearchInput('')}
+            aria-label='close'
           >
             <XMarkIcon className="h-5 " />
           </button>
         ) : null}
-        <button className="absolute right-2 top-1">
+        <button className="absolute right-2 top-1" aria-label='search icon'>
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
         {searchInput.length > 0 && filteredProducts != undefined ? (
@@ -184,6 +186,6 @@ export default function Header({ products }: HeaderProps) {
         <div className="w-8 h-0.5 bg-gray-600"></div>
       </div>
       <Menu open={open} setOpen={setOpen} />
-    </div>
+    </header>
   )
 }

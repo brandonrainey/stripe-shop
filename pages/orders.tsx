@@ -16,9 +16,9 @@ export default function Orders({ orders }: OrdersProps) {
   return (
     <div className="flex flex-col">
       <Header products={undefined!} />
-      <p className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
+      <h1 className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
         Your Orders
-      </p>
+      </h1>
       {session.data == null ? (
         <div className="bg-[#f6f6f6] h-24 w-11/12 sm:w-3/4 text-lg sm:text-xl flex items-center justify-center self-center shadow-lg">
           <p>Please Sign In to view your orders.</p>

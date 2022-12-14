@@ -66,13 +66,13 @@ export default function Cart({ products }: CartProps) {
           {items.length === 0 ? 'Your Cart Is Empty' : ''}
         </span>
       </p>
-      <p
+      <h1
         className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${
           items.length === 0 ? 'hidden' : ''
         }`}
       >
         Your Cart
-      </p>
+      </h1>
       <div className="flex flex-col gap-y-4">
         {items.map((item: any, index: number) => (
           <div
@@ -117,6 +117,7 @@ export default function Cart({ products }: CartProps) {
               <button
                 className=" w-auto sm:min-w-[140px]  p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                 onClick={() => removeItemFromCart(item.id)}
+                aria-label='remove from cart'
               >
                 remove from cart
               </button>
@@ -139,6 +140,7 @@ export default function Cart({ products }: CartProps) {
           className={`${
             items.length === 0 ? 'hidden' : ''
           } mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}
+          aria-label='checkout'
         >
           Checkout
         </button>

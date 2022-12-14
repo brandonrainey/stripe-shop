@@ -50,7 +50,7 @@ export default function SearchDropdown({
   }
 
   return (
-    <div
+    <nav
       className={`absolute flex flex-col h-auto sm:w-full w-[300px] z-40 bg-white shadow-md border rounded-lg top-[32px] -right-20 sm:right-0  `}
     >
       {filteredProducts.map((item: any, index: number) => (
@@ -69,6 +69,6 @@ export default function SearchDropdown({
       >
         No matching results
       </div>
-    </div>
+    </nav>
   )
 }

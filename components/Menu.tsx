@@ -66,7 +66,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
         </p>
       </div>
       <div className="flex flex-col p-4 text-2xl gap-6 mt-12 font-semibold cursor-pointer">
-        <div className="border-b-2 py-2 pl-1 ">
+        <nav className="border-b-2 py-2 pl-1 ">
           <div
             className="flex items-center hover:bg-[#f6f6f6]"
             onClick={() => setOpenCategories(!openCategories)}
@@ -101,7 +101,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
               electronics
             </li>
           </ul>
-        </div>
+        </nav>
         <p
           className="border-b-2 py-2 pl-1 hover:bg-[#f6f6f6]"
           onClick={() => router.push('/deals')}

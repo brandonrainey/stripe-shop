@@ -39,7 +39,7 @@ export default function Products({ products }: ProductsProps) {
     <div className="flex flex-col justify-center">
       <Header products={products} />
 
-      <p className="text-3xl font-bold pl-6 pt-6">All Products</p>
+      <h1 className="text-3xl font-bold pl-6 pt-6">All Products</h1>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product: any, index: number) => (
           <div className="flex justify-center " key={index}>
@@ -76,6 +76,7 @@ export default function Products({ products }: ProductsProps) {
                 <button
                   className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                   onClick={() => addItemToCart(index)}
+                  aria-label='add to cart'
                 >
                   add to cart
                 </button>

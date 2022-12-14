@@ -29,10 +29,10 @@ export default function Home({ products }: ProductsProps) {
       </Head>
       <Header products={products} />
       <HeroBanner />
-      <div className="sm:px-14 px-4">
+      <main className="sm:px-14 px-4">
         <Categories />
         <Deals products={products} />
-      </div>
+      </main>
       <Alert />
     </div>
   )

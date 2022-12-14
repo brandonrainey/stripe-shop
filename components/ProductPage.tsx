@@ -94,7 +94,7 @@ export default function ProductPage({
           </div>
 
           <p className="text-3xl font-semibold">${products[productId].price}</p>
-          <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white" onClick={() => addItemToCart()}>
+          <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white" onClick={() => addItemToCart()} aria-label='add to cart'>
             Add to Cart
           </button>
         </div>
