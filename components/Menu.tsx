@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-type MenuProps = {
-  open: any
-  setOpen: any
+interface MenuProps {
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function Menu({ open, setOpen }: MenuProps) {
@@ -30,7 +30,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
 
   return (
     <div
-      className={`w-3/4 h-screen z-40 bg-white absolute top-0 flex flex-col shadow-lg transition-all duration-300 right-0 overflow-hidden ${
+      className={`w-3/4 h-screen z-40 bg-white fixed top-0 flex flex-col shadow-lg transition-all duration-300 right-0 overflow-y-scroll scrollbar-hide ${
         open ? ' ' : 'w-0'
       }`}
     >
@@ -39,20 +39,25 @@ export default function Menu({ open, setOpen }: MenuProps) {
           className="h-10 absolute cursor-pointer"
           onClick={() => setOpen(!open)}
         />
-        <div className='ml-auto flex flex-col items-center'>
+        <div className="ml-auto flex flex-col items-center">
           <p
-          className={`text-base font-semibold ml-auto pt-2 pr-2 ${session.data == null ? 'cursor-pointer' : ''}`}
-          onClick={session.data == null ? () => signIn() : undefined}
-        >
-          {session.data != null
-            ? `Hello, ${session?.data?.user?.name}`
-            : 'Sign In'}
-        </p>
-        <p className='text-xs cursor-pointer' onClick={session.data == null ? () => signIn() : () => signOut()}>{session.data != null
-            ? `Sign Out`
-            : null}</p>
+            className={`text-base font-semibold ml-auto pt-2 pr-2 ${
+              session.data == null ? 'cursor-pointer' : ''
+            }`}
+            onClick={session.data == null ? () => signIn() : undefined}
+          >
+            {session.data != null
+              ? `Hello, ${session?.data?.user?.name}`
+              : 'Sign In'}
+          </p>
+          <p
+            className="text-xs cursor-pointer"
+            onClick={session.data == null ? () => signIn() : () => signOut()}
+          >
+            {session.data != null ? `Sign Out` : null}
+          </p>
         </div>
-        
+
         <p
           className=" mt-auto text-3xl p-2 font-bold cursor-pointer hover:bg-[#d7d6d6] whitespace-nowrap"
           onClick={() => handleBrowse()}
@@ -70,11 +75,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
             <ChevronDownIcon className="h-8" />
           </div>
 
-          <ul
-            className={`${
-              openCategories ? '' : 'h-0 hidden'
-            }  h-40`}
-          >
+          <ul className={`${openCategories ? '' : 'h-0 hidden'}  h-40`}>
             <li
               className="pl-4 py-1 border-b hover:bg-[#f6f6f6]"
               onClick={() => router.push('/mens')}
@@ -101,7 +102,12 @@ export default function Menu({ open, setOpen }: MenuProps) {
             </li>
           </ul>
         </div>
-        <p className="border-b-2 py-2 pl-1 hover:bg-[#f6f6f6]" onClick={() => router.push('/deals')}>Deals</p>
+        <p
+          className="border-b-2 py-2 pl-1 hover:bg-[#f6f6f6]"
+          onClick={() => router.push('/deals')}
+        >
+          Deals
+        </p>
         <p
           className="py-2 pl-1 hover:bg-[#f6f6f6]"
           onClick={() => handleOrders()}

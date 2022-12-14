@@ -15,12 +15,22 @@ import { selectItems } from '../slices/cartSlice'
 import { useRouter } from 'next/router'
 import Menu from './Menu'
 import Dropdown from './Dropdown'
-import Link from 'next/link'
 import SearchDropdown from './SearchDropdown'
 import ProductPage from './ProductPage'
 
-type HeaderProps = {
-  products: any
+interface HeaderProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
 }
 
 export default function Header({ products }: HeaderProps) {
@@ -53,8 +63,15 @@ export default function Header({ products }: HeaderProps) {
 
   return (
     <div className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
-      {openProductPage ? <ProductPage products={products} productId={productId} openProductPage={openProductPage} setOpenProductPage={setOpenProductPage}/> : null}
-      
+      {openProductPage ? (
+        <ProductPage
+          products={products}
+          productId={productId}
+          openProductPage={openProductPage}
+          setOpenProductPage={setOpenProductPage}
+        />
+      ) : null}
+
       <div className="flex items-center gap-2" onClick={() => router.push('/')}>
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
@@ -101,16 +118,21 @@ export default function Header({ products }: HeaderProps) {
           onChange={handleChange}
           disabled={products == undefined ? true : false}
         ></input>
-        {searchInput != '' ? <button className='absolute top-2 right-9' onClick={() => setSearchInput('')}><XMarkIcon className='h-5 '/></button> : null}
-        <button className="absolute right-2 top-1" >
+        {searchInput != '' ? (
+          <button
+            className="absolute top-2 right-9"
+            onClick={() => setSearchInput('')}
+          >
+            <XMarkIcon className="h-5 " />
+          </button>
+        ) : null}
+        <button className="absolute right-2 top-1">
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
         {searchInput.length > 0 && filteredProducts != undefined ? (
           <SearchDropdown
             filteredProducts={filteredProducts}
-            searchInput={searchInput}
             setSearchInput={setSearchInput}
-            productId={productId}
             setProductId={setProductId}
             products={products}
             openProductPage={openProductPage}
@@ -122,20 +144,22 @@ export default function Header({ products }: HeaderProps) {
         className="flex flex-col gap-x-1 cursor-pointer items-center"
         onClick={session.data == null ? () => signIn() : undefined}
       >
-        <div className='flex '>
+        <div className="flex ">
           <div className="sm:block hidden">
-          <UserIcon className="h-6 w-6" />
+            <UserIcon className="h-6 w-6" />
+          </div>
+          <p className="text-sm text-center sm:block hidden font-semibold">
+            {session.data != null
+              ? `Hello, ${session?.data?.user?.name}`
+              : 'Sign In'}
+          </p>
         </div>
-        <p className="text-sm text-center sm:block hidden font-semibold">
-          {session.data != null
-            ? `Hello, ${session?.data?.user?.name}`
-            : 'Sign In'}
+        <p
+          className={`text-xs sm:block hidden`}
+          onClick={session.data == null ? () => signIn() : () => signOut()}
+        >
+          {session.data != null ? `Sign Out` : null}
         </p>
-        </div>
-        <p className={`text-xs sm:block hidden`} onClick={session.data == null ? () => signIn() : () => signOut()}>{session.data != null
-            ? `Sign Out`
-            : null}</p>
-        
       </div>
       <div
         className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer"

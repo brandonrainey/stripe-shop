@@ -1,13 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import mensTP from '../public/mens-tp.png'
+import womensTP from '../public/womens-tp.png'
+import jeweleryTP from '../public/jewelery-tp.png'
+import electronicsTP from '../public/electronics-tp.png'
 import { useRouter } from 'next/router'
 
-type ProductsProps = {
-  products: any
-}
-
-export default function Categories({ products }: ProductsProps) {
+export default function Categories() {
   const router = useRouter()
   return (
     <div className="w-full mt-10">
@@ -24,8 +23,9 @@ export default function Categories({ products }: ProductsProps) {
             <Image
               src={mensTP}
               width={120}
+              height={120}
               alt="category image"
-              className="bg-transparent"
+              className="bg-transparent w-auto h-auto"
             />
           </div>
           <div
@@ -34,11 +34,11 @@ export default function Categories({ products }: ProductsProps) {
           >
             <p className="mt-2 text-white text-lg font-semibold">WOMENS</p>
             <Image
-              src={'/womens-tp.png'}
+              src={womensTP}
               height={120}
               width={120}
               alt="category image"
-              className="bg-transparent"
+              className="bg-transparent w-auto h-auto"
             />
           </div>
         </div>
@@ -50,11 +50,11 @@ export default function Categories({ products }: ProductsProps) {
           >
             <p className="mt-2 text-white text-lg font-semibold">JEWERLY</p>
             <Image
-              src={'/jewerly-tp.png'}
+              src={jeweleryTP}
               height={120}
               width={120}
               alt="category image"
-              className="bg-transparent"
+              className="bg-transparent w-auto h-auto"
             />
           </div>
           <div
@@ -63,11 +63,11 @@ export default function Categories({ products }: ProductsProps) {
           >
             <p className="mt-2 text-white text-lg font-semibold">ELECTRONICS</p>
             <Image
-              src={'/electronics-tp.png'}
+              src={electronicsTP}
               height={120}
               width={120}
               alt="category image"
-              className="bg-transparent"
+              className="bg-transparent w-auto h-auto"
             />
           </div>
         </div>

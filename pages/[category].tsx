@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../slices/cartSlice'
+import { addToCart, setOpenAlert } from '../slices/cartSlice'
+import Alert from '../components/Alert'
 
-type ProductsProps = {
-  products: any
+interface ProductsProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
 }
 
 const MAX_RATING = 5
@@ -20,11 +32,11 @@ export default function Category({ products }: ProductsProps) {
 
   const dispatch = useDispatch()
 
-  function addItemToCart(index: any) {
+  function addItemToCart(index: number) {
     dispatch(addToCart(categoryArray[index]))
+    dispatch(setOpenAlert(true))
   }
 
-  console.log(products)
 
   useEffect(() => {
     let name = ''
@@ -42,7 +54,7 @@ export default function Category({ products }: ProductsProps) {
         name = 'electronics'
         break
     }
-    let array = products.filter((product: any) => product.category == name)
+    let array: any = products.filter((product: any) => product.category == name)
     setCategoryArray(array)
   }, [category])
 
@@ -51,7 +63,7 @@ export default function Category({ products }: ProductsProps) {
       <Header products={products} />
       <p className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {categoryArray.map((product: any, index: any) => (
+        {categoryArray.map((product: any, index: number) => (
           <div className="flex justify-center " key={index}>
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
@@ -60,7 +72,7 @@ export default function Category({ products }: ProductsProps) {
                   height={120}
                   width={120}
                   alt="product image"
-                  className="self-center "
+                  className="self-center w-auto h-auto"
                 />
               </div>
               <div className="flex flex-col bg-[#f6f6f6] p-1 rounded-lg">
@@ -79,7 +91,7 @@ export default function Category({ products }: ProductsProps) {
                   )
                     .fill(undefined)
                     .map((_, index) => (
-                      <StarIcon className="h-5 text-yellow-300" key={index}/>
+                      <StarIcon className="h-5 text-yellow-300" key={index} />
                     ))}
                 </div>
 
@@ -94,6 +106,7 @@ export default function Category({ products }: ProductsProps) {
           </div>
         ))}
       </div>
+      <Alert />
     </div>
   )
 }

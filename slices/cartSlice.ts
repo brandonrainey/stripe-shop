@@ -2,9 +2,35 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
 type ItemsState = {
-  items: any
-  deals: any
-  dealItems: any
+  items: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+    discount?: number
+    discountedPrice?: number
+  }[]
+  deals: boolean
+  dealItems: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+    discount?: number
+    discountedPrice?: number
+  }[]
   openAlert: boolean
 }
 
@@ -43,12 +69,17 @@ export const cartSlice = createSlice({
     },
     setOpenAlert: (state, action: PayloadAction<any>) => {
       state.openAlert = action.payload
-    }
+    },
   },
 })
 
-export const { addToCart, removeFromCart, setDeals, setDealItems, setOpenAlert } =
-  cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  setDeals,
+  setDealItems,
+  setOpenAlert,
+} = cartSlice.actions
 
 export const selectItems = (state: RootState) => state.cart.items
 export const selectTotal = (state: RootState) =>

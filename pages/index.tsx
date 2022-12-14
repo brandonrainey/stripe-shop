@@ -1,30 +1,39 @@
-import react, { useState } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import Categories from '../components/Categories'
 import Deals from '../components/DealItems'
 import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
 import Alert from '../components/Alert'
 
-type ProductsProps = {
-  products: any
+interface ProductsProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
 }
 
 export default function Home({ products }: ProductsProps) {
-  
-
-
   return (
-    <div className='relative'>
-      <Header products={products}/>
+    <div className="relative">
+      <Head>
+        <title>Stripe-Shop</title>
+        <meta name="description" content="ecommerce stripe shop" />
+      </Head>
+      <Header products={products} />
       <HeroBanner />
       <div className="sm:px-14 px-4">
-        <Categories products={products} />
+        <Categories />
         <Deals products={products} />
       </div>
       <Alert />
-      
     </div>
   )
 }

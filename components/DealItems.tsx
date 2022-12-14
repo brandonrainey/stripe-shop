@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
-
 import ScrollContainer from 'react-indiana-drag-scroll'
-
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addToCart,
@@ -10,10 +8,24 @@ import {
   selectDeals,
   setDealItems,
   selectDealItems,
+  setOpenAlert,
 } from '../slices/cartSlice'
 
-type ProductsProps = {
-  products: any
+interface ProductsProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+    discount?: number
+    discountedPrice?: number
+  }[]
 }
 
 export default function DealItems({ products }: ProductsProps) {
@@ -23,8 +35,9 @@ export default function DealItems({ products }: ProductsProps) {
 
   const activeDeals = useSelector(selectDeals)
 
-  function addItemToCart(index: any) {
+  function addItemToCart(index: number) {
     dispatch(addToCart(activeDealItems[index]))
+    dispatch(setOpenAlert(true))
   }
 
   const MAX_RATING = 50
@@ -115,16 +128,14 @@ export default function DealItems({ products }: ProductsProps) {
     dispatch(setDeals(true))
   }, [])
 
-  
-
   return (
     <div className="w-full mt-12 flex flex-col mb-4">
       <p className="text-2xl font-semibold ml-12">Best Deals For You</p>
       <ScrollContainer
-        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show"
         hideScrollbars={false}
       >
-        {activeDealItems.map((item: any, index: any) => (
+        {activeDealItems.map((item: any, index: number) => (
           <div
             className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] "
             key={index}
@@ -134,7 +145,7 @@ export default function DealItems({ products }: ProductsProps) {
               height={120}
               width={120}
               alt="product image"
-              className="self-center mb-auto mt-12"
+              className="self-center mb-auto mt-12 w-auto h-auto"
             />
 
             <div className={`flex flex-col  rounded-lg p-1`}>

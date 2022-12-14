@@ -1,12 +1,26 @@
 import React from 'react'
 import { StarIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { addToCart, setOpenAlert } from '../slices/cartSlice'
 
-type ProductPageProps = {
-  products: any
-  productId: any
-  openProductPage: any
-  setOpenProductPage: any
+
+interface ProductPageProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
+  productId: number
+  openProductPage: boolean
+  setOpenProductPage: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const MAX_RATING = 5
@@ -18,6 +32,15 @@ export default function ProductPage({
   openProductPage,
   setOpenProductPage,
 }: ProductPageProps) {
+  const dispatch = useDispatch()
+
+  function addItemToCart() {
+    dispatch(addToCart(products[productId]))
+
+    dispatch(setOpenAlert(true))
+    setOpenProductPage(false)
+  }
+
   const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -39,17 +62,15 @@ export default function ProductPage({
 
   return (
     <div className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center ">
-      <div className="flex bg-white h-1/2 w-2/3 mt-40 relative items-center rounded-lg">
-        <div className="h-[500px] w-[500px] relative">
+      <div className="flex md:flex-row flex-col bg-white h-[800px] md:h-1/2 w-full md:w-2/3 mt-24 md:mt-40 relative items-center rounded-lg">
+        <div className="h-[500px] w-full sm:w-[500px] relative">
           <Image
             src={products[productId].image}
-            className="rounded-lg object-contain p-1"
+            className="rounded-lg object-contain p-1 "
             fill
             alt="product image"
             placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(500, 500)
-            )}`}
+            blurDataURL={`/loading-icon.gif`}
             style={{}}
           ></Image>
         </div>
@@ -73,7 +94,7 @@ export default function ProductPage({
           </div>
 
           <p className="text-3xl font-semibold">${products[productId].price}</p>
-          <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white">
+          <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white" onClick={() => addItemToCart()}>
             Add to Cart
           </button>
         </div>
@@ -82,6 +103,7 @@ export default function ProductPage({
           onClick={() => setOpenProductPage(false)}
         />
       </div>
+      
     </div>
   )
 }

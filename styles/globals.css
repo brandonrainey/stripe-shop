@@ -22,4 +22,12 @@ a {
   box-sizing: border-box;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-show::-webkit-scrollbar {
+  display: block;
+}
+
 

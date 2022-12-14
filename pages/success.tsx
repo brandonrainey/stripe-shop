@@ -3,12 +3,27 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Header from '../components/Header'
 
-export default function Success() {
+interface SuccessProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
+}
+
+export default function Success({ products }: SuccessProps) {
   const router = useRouter()
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header products={undefined} />
+      <Header products={products} />
       <main className="flex flex-col w-3/4 sm:w-1/2 h-52 mt-12 justify-center bg-[#f6f6f6] rounded-lg shadow-lg p-1">
         <div className="flex items-center justify-center">
           <CheckCircleIcon className="h-12 text-green-500" />
@@ -30,4 +45,16 @@ export default function Success() {
       </main>
     </div>
   )
+}
+
+export async function getStaticProps(context: any) {
+  const products = await fetch('https://fakestoreapi.com/products').then(
+    (res) => res.json()
+  )
+
+  return {
+    props: {
+      products,
+    },
+  }
 }

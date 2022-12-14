@@ -8,9 +8,24 @@ import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 
+interface CartProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
+}
+
 const stripePromise = loadStripe(process.env.stripe_public_key)
 
-export default function Cart() {
+export default function Cart({ products }: CartProps) {
   const items = useSelector(selectItems)
   const total = useSelector(selectTotal)
   const session = useSession()
@@ -35,13 +50,13 @@ export default function Cart() {
 
   const dispatch = useDispatch()
 
-  function removeItemFromCart(id: any) {
+  function removeItemFromCart(id: number) {
     dispatch(removeFromCart(id))
   }
 
   return (
     <div>
-      <Header products={undefined} />
+      <Header products={products} />
       <p
         className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${
           items.length === 0 ? '' : 'hidden'
@@ -64,17 +79,17 @@ export default function Cart() {
             className="flex flex-col sm:flex-row gap-2 items-center  justify-center border-b pb-2"
             key={index}
           >
-            <div className="flex items-center">
+            <div className="flex items-center grow">
               <div className="w-1/2 h-full flex justify-center items-center bg-white px-2">
                 <Image
                   src={item.image}
                   height={120}
                   width={120}
                   alt="product image"
-                  className="self-center min-w-[80px]"
+                  className="self-center min-w-[80px] w-auto h-auto"
                 />
               </div>
-              <div className="flex flex-col w-3/4 sm:w-full bg-[#f6f6f6] p-1 rounded-lg sm:h-40">
+              <div className="flex flex-col w-3/4 sm:w-full bg-[#f6f6f6] p-1 rounded-lg sm:h-40 ">
                 <div className="flex w-full">
                   <p className="font-semibold text-medium mr-6">{item.title}</p>
                   <p className="ml-auto text-2xl font-bold">
@@ -100,7 +115,7 @@ export default function Cart() {
 
             <div className="flex px-4">
               <button
-                className=" w-auto sm:min-w-[100px]  p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
+                className=" w-auto sm:min-w-[140px]  p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                 onClick={() => removeItemFromCart(item.id)}
               >
                 remove from cart
@@ -114,7 +129,7 @@ export default function Cart() {
         <p
           className={`${
             items.length === 0 ? 'hidden' : ''
-          } text-lg pt-2 pl-2 font-semibold bg-[#f6f6f6]`}
+          } text-2xl pt-2 pl-2 font-semibold bg-[#f6f6f6]`}
         >
           Total - ${total.toFixed(2)}
         </p>
@@ -130,4 +145,16 @@ export default function Cart() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps(context: any) {
+  const products = await fetch('https://fakestoreapi.com/products').then(
+    (res) => res.json()
+  )
+
+  return {
+    props: {
+      products,
+    },
+  }
 }

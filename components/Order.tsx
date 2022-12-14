@@ -1,15 +1,13 @@
-import { iteratorSymbol } from 'immer/dist/internal'
-import Image from 'next/image'
 import React from 'react'
 import moment from 'moment'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-type OrderProp = {
+interface OrderProp {
   order: any
 }
 
 export default function Order({ order }: OrderProp) {
-  console.log(order)
+  
   return (
     <div className=" flex flex-col w-11/12 sm:w-3/4 h-62 border shadow-lg rounded-lg">
       <div className="flex w-full h-20 bg-[#f6f6f6] p-1 sm:px-2 relative">

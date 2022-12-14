@@ -1,36 +1,48 @@
 import React from 'react'
-import { selectDealItems, addToCart } from '../slices/cartSlice'
+import { selectDealItems, addToCart, setOpenAlert } from '../slices/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
-
+import Alert from '../components/Alert'
 
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-type DealsProps = {
-  products: any
+interface DealsProps {
+  products: {
+    category: string
+    description: string
+    id: number
+    image: string
+    price: number
+    rating: {
+      count: number
+      rate: number
+    }
+    title: string
+  }[]
 }
 
 export default function Deals({ products }: DealsProps) {
   const dispatch = useDispatch()
   const deals = useSelector(selectDealItems)
 
-  function addItemToCart(index: any) {
+  function addItemToCart(index: number) {
     dispatch(addToCart(deals[index]))
+    dispatch(setOpenAlert(true))
   }
 
-  console.log(products)
+  
 
-  //1girl, bare shoulders, blue tongue, breasts, breath, colored tongue, glowing, grey background, hair between eyes, holding, large breasts, long hair, long tongue, open mouth, pointy ears, saliva, saliva trail, simple background, solo, tongue, snake
+  //
 
   return (
     <div>
-      <Header products={products}/>
+      <Header products={products} />
       <p className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</p>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {deals.map((product: any, index: any) => (
+        {deals.map((product: any, index: number) => (
           <div className="flex justify-center " key={index}>
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
@@ -39,7 +51,7 @@ export default function Deals({ products }: DealsProps) {
                   height={120}
                   width={120}
                   alt="product image"
-                  className="self-center "
+                  className="self-center w-auto h-auto"
                 />
               </div>
               <div className="flex flex-col bg-[#f6f6f6] p-1 rounded-lg">
@@ -68,7 +80,7 @@ export default function Deals({ products }: DealsProps) {
                   )
                     .fill(undefined)
                     .map((_, index) => (
-                      <StarIcon className="h-5 text-yellow-300" key={index}/>
+                      <StarIcon className="h-5 text-yellow-300" key={index} />
                     ))}
                 </div>
 
@@ -83,6 +95,7 @@ export default function Deals({ products }: DealsProps) {
           </div>
         ))}
       </div>
+      <Alert />
     </div>
   )
 }

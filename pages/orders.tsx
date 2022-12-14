@@ -6,8 +6,8 @@ import moment from 'moment'
 import { collection, doc, getDocs } from 'firebase/firestore'
 import Order from '../components/Order'
 
-type OrdersProps = {
-  orders: any
+interface OrdersProps {
+  orders: unknown[]
 }
 
 export default function Orders({ orders }: OrdersProps) {
@@ -15,7 +15,7 @@ export default function Orders({ orders }: OrdersProps) {
 
   return (
     <div className="flex flex-col">
-      <Header products={undefined} />
+      <Header products={undefined!} />
       <p className="sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6">
         Your Orders
       </p>

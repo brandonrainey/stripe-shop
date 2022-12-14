@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectItems, selectOpenAlert, setOpenAlert } from '../slices/cartSlice'
 
@@ -6,32 +6,36 @@ export default function Alert() {
   const items = useSelector(selectItems)
   const dispatch = useDispatch()
   const openAlert = useSelector(selectOpenAlert)
-  
 
   useEffect(() => {
-    
-    
-      
-      
-      setTimeout(() => {
-        dispatch(setOpenAlert(false))
-      }, 3000)
-    
+    const timer = setTimeout(() => {
+      dispatch(setOpenAlert(false))
+    }, 3000)
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [items])
 
-  
-  
   return openAlert ? (
-    <div className={`fixed bottom-0 pb-4 pl-4 transition-all duration-300 opacity-1 ${openAlert ? 'opacity-1' : 'opacity-0'}`}>
+    <div
+      className={`fixed bottom-0 pb-4 pl-4 transition-all duration-300 opacity-1 ${
+        openAlert ? 'opacity-1' : 'opacity-0'
+      }`}
+    >
       <div
-        className={`bg-green-100 border border-red-400 text-red-700 px-4 py-3 pr-8 rounded relative w-full sm:w-[400px] truncate  `}
+        className={`bg-blue-100 border border-slate-400 text-black px-4 py-3 pr-8 rounded relative w-full sm:w-[400px] truncate shadow `}
         role="alert"
       >
-        
-        <p className="block sm:inline font-semibold w-[250px] truncate">Added to Cart - {items.at(-1)?.title}</p>
-        <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+        <p className="block sm:inline font-semibold w-[250px] truncate">
+          Added to Cart - {items.at(-1)?.title}
+        </p>
+        <span
+          className="absolute top-0 bottom-0 -right-1 px-4 py-3"
+          onClick={() => dispatch(setOpenAlert(false))}
+        >
           <svg
-            className="fill-current h-6 w-6 text-red-500"
+            className="fill-current h-6 w-6 text-slate-500"
             role="button"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
