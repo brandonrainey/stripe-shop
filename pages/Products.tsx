@@ -33,8 +33,6 @@ export default function Products({ products }: ProductsProps) {
     dispatch(setOpenAlert(true))
   }
 
-  
-
   return (
     <div className="flex flex-col justify-center">
       <Header products={products} />
@@ -50,6 +48,8 @@ export default function Products({ products }: ProductsProps) {
                   height={120}
                   width={120}
                   alt="product image"
+                  placeholder="blur"
+                  blurDataURL="/loading-icon.gif"
                   className="self-center w-auto h-auto"
                 />
               </div>
@@ -76,7 +76,7 @@ export default function Products({ products }: ProductsProps) {
                 <button
                   className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                   onClick={() => addItemToCart(index)}
-                  aria-label='add to cart'
+                  aria-label="add to cart"
                 >
                   add to cart
                 </button>

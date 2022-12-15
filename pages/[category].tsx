@@ -37,7 +37,6 @@ export default function Category({ products }: ProductsProps) {
     dispatch(setOpenAlert(true))
   }
 
-
   useEffect(() => {
     let name = ''
     switch (category) {
@@ -72,6 +71,8 @@ export default function Category({ products }: ProductsProps) {
                   height={120}
                   width={120}
                   alt="product image"
+                  placeholder="blur"
+                  blurDataURL="/loading-icon.gif"
                   className="self-center w-auto h-auto"
                 />
               </div>
@@ -98,7 +99,7 @@ export default function Category({ products }: ProductsProps) {
                 <button
                   className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                   onClick={() => addItemToCart(index)}
-                  aria-label='add to cart'
+                  aria-label="add to cart"
                 >
                   add to cart
                 </button>
@@ -126,7 +127,12 @@ export async function getStaticProps(context: any) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { category: 'mens' } }, { params: { category: 'womens' } }, { params: { category: 'jewelery' } }, { params: { category: 'electronics' } }],
+    paths: [
+      { params: { category: 'mens' } },
+      { params: { category: 'womens' } },
+      { params: { category: 'jewelery' } },
+      { params: { category: 'electronics' } },
+    ],
     fallback: false, // can also be true or 'blocking'
   }
 }
