@@ -112,7 +112,7 @@ export default function Category({ products }: ProductsProps) {
   )
 }
 
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
   const products = await fetch('https://fakestoreapi.com/products').then(
     (res) => res.json()
   )
@@ -121,5 +121,12 @@ export async function getServerSideProps(context: any) {
     props: {
       products,
     },
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { category: 'mens' } }, { params: { category: 'womens' } }, { params: { category: 'jewelery' } }, { params: { category: 'electronics' } }],
+    fallback: false, // can also be true or 'blocking'
   }
 }
