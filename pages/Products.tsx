@@ -45,13 +45,12 @@ export default function Products({ products }: ProductsProps) {
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
                 <Image
-                  src={fallbackImage == '' ? product.image : fallbackImage}
+                  src={product.image}
                   height={120}
                   width={120}
                   alt="product image"
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
-                  onError={() => setFallbackImage('/error-image.png')}
                   className="self-center w-auto h-auto"
                 />
               </div>
