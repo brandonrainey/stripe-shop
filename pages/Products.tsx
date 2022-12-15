@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/24/solid'
@@ -26,6 +26,7 @@ const MIN_RATING = 1
 
 export default function Products({ products }: ProductsProps) {
   const dispatch = useDispatch()
+  const [fallbackImage, setFallbackImage] = useState('')
 
   function addItemToCart(index: number) {
     dispatch(addToCart(products[index]))
@@ -44,12 +45,13 @@ export default function Products({ products }: ProductsProps) {
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
                 <Image
-                  src={product.image}
+                  src={fallbackImage == '' ? product.image : fallbackImage}
                   height={120}
                   width={120}
                   alt="product image"
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
+                  onError={() => setFallbackImage('/error-image.png')}
                   className="self-center w-auto h-auto"
                 />
               </div>
