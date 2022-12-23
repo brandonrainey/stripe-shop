@@ -21,7 +21,7 @@ export default function HeroBanner() {
         fill
         alt="hero image"
         className="object-cover"
-        priority
+        priority={true}
       />
     </div>
   )

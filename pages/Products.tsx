@@ -52,6 +52,7 @@ export default function Products({ products }: ProductsProps) {
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
                   className="self-center w-auto h-auto"
+                  priority={true}
                 />
               </div>
               <div className="flex flex-col bg-[#f6f6f6] p-1 rounded-lg">
