@@ -10,7 +10,9 @@ interface MenuProps {
 
 export default function Menu({ open, setOpen }: MenuProps) {
   const session = useSession()
+
   const router = useRouter()
+
   const [openCategories, setOpenCategories] = useState(false)
 
   function handleBrowse() {
@@ -23,6 +25,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
     setOpen(!open)
   }
 
+  //closes menu on routing
   useEffect(() => {
     setOpen(false)
     setOpenCategories(false)

@@ -24,12 +24,12 @@ interface ProductPageProps {
 }
 
 const MAX_RATING = 5
+
 const MIN_RATING = 1
 
 export default function ProductPage({
   products,
   productId,
-  openProductPage,
   setOpenProductPage,
 }: ProductPageProps) {
   const dispatch = useDispatch()
@@ -38,30 +38,12 @@ export default function ProductPage({
     dispatch(addToCart(products[productId]))
 
     dispatch(setOpenAlert(true))
+
     setOpenProductPage(false)
   }
 
-  const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`
-
-  const toBase64 = (str: string) =>
-    typeof window === 'undefined'
-      ? Buffer.from(str).toString('base64')
-      : window.btoa(str)
-
   return (
-    <div className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center ">
+    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center ">
       <div className="flex md:flex-row flex-col bg-white h-[800px] md:h-1/2 w-full md:w-2/3 mt-24 md:mt-40 relative items-center rounded-lg">
         <div className="h-[500px] w-full sm:w-[500px] relative">
           <Image
@@ -104,6 +86,6 @@ export default function ProductPage({
         />
       </div>
       
-    </div>
+    </article>
   )
 }

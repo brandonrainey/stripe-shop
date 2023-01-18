@@ -24,7 +24,7 @@ export default function Success({ products }: SuccessProps) {
   return (
     <div className="flex flex-col justify-center items-center">
       <Header products={products} />
-      <main className="flex flex-col w-3/4 sm:w-1/2 h-52 mt-12 justify-center bg-[#f6f6f6] rounded-lg shadow-lg p-1">
+      <section className="flex flex-col w-3/4 sm:w-1/2 h-52 mt-12 justify-center bg-[#f6f6f6] rounded-lg shadow-lg p-1">
         <div className="flex items-center justify-center">
           <CheckCircleIcon className="h-12 text-green-500" />
           <p className="font-semibold text-xl sm:text-2xl text-center">
@@ -43,7 +43,7 @@ export default function Success({ products }: SuccessProps) {
         >
           View Orders
         </button>
-      </main>
+      </section>
     </div>
   )
 }

@@ -4,9 +4,12 @@ import { selectItems, selectOpenAlert, setOpenAlert } from '../slices/cartSlice'
 
 export default function Alert() {
   const items = useSelector(selectItems)
+
   const dispatch = useDispatch()
+  
   const openAlert = useSelector(selectOpenAlert)
 
+  //timer for add to cart popup
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(setOpenAlert(false))

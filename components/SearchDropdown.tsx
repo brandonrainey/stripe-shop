@@ -39,6 +39,7 @@ export default function SearchDropdown({
   setOpenProductPage,
   setSearchInput,
 }: SearchProps) {
+  //finds product with matching id from dropdown
   function handleProductId(index: number) {
     setProductId(
       products.findIndex(

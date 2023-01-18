@@ -35,17 +35,23 @@ interface HeaderProps {
 
 export default function Header({ products }: HeaderProps) {
   const items = useSelector(selectItems)
+
   const session = useSession()
+
   const router = useRouter()
 
   const [searchInput, setSearchInput] = useState('')
+
   const [filteredProducts, setFilteredProducts] = useState<any>()
 
   const [open, setOpen] = useState(false)
+
   const [openDropdown, setOpenDropdown] = useState(false)
+
   const [openProductPage, setOpenProductPage] = useState(false)
 
   const [productId, setProductId] = useState(0)
+
 
   function handleChange(e: any) {
     setSearchInput(e.target.value)
@@ -76,9 +82,9 @@ export default function Header({ products }: HeaderProps) {
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
-        <p className="sm:text-3xl text-xl text-center font-semibold cursor-pointer">
+        <h1 className="sm:text-3xl text-xl text-center font-semibold cursor-pointer">
           My Shop
-        </p>
+        </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
         <p

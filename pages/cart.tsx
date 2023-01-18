@@ -27,7 +27,9 @@ const stripePromise = loadStripe(process.env.stripe_public_key)
 
 export default function Cart({ products }: CartProps) {
   const items = useSelector(selectItems)
+
   const total = useSelector(selectTotal)
+
   const session = useSession()
 
   async function createCheckoutSession() {
@@ -46,6 +48,7 @@ export default function Cart({ products }: CartProps) {
   }
 
   const MAX_RATING = 5
+  
   const MIN_RATING = 1
 
   const dispatch = useDispatch()

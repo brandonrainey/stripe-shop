@@ -41,6 +41,7 @@ export default function DealItems({ products }: ProductsProps) {
   }
 
   const MAX_RATING = 50
+  
   const MIN_RATING = 10
 
   function makeNewDealsArray() {
@@ -120,6 +121,7 @@ export default function DealItems({ products }: ProductsProps) {
     dispatch(setDealItems(dealFive))
   }
 
+  //prevents new deal creation on page routing
   useEffect(() => {
     if (!activeDeals) {
       makeNewDealsArray()
@@ -130,13 +132,13 @@ export default function DealItems({ products }: ProductsProps) {
 
   return (
     <section className="w-full mt-12 flex flex-col mb-4">
-      <p className="text-2xl font-semibold ml-12">Best Deals For You</p>
+      <h1 className="text-2xl font-semibold ml-12">Best Deals For You</h1>
       <ScrollContainer
         className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show"
         hideScrollbars={false}
       >
         {activeDealItems.map((item: any, index: number) => (
-          <div
+          <article
             className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] "
             key={index}
           >
@@ -145,8 +147,8 @@ export default function DealItems({ products }: ProductsProps) {
               height={120}
               width={120}
               alt="product image"
-              placeholder='blur'
-              blurDataURL='/loading-icon.gif'
+              placeholder="blur"
+              blurDataURL="/loading-icon.gif"
               className="self-center mb-auto mt-12 w-auto h-auto"
             />
 
@@ -166,12 +168,12 @@ export default function DealItems({ products }: ProductsProps) {
               <button
                 className=" w-28 p-1 rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                 onClick={() => addItemToCart(index)}
-                aria-label='add to cart'
+                aria-label="add to cart"
               >
                 add to cart
               </button>
             </div>
-          </div>
+          </article>
         ))}
       </ScrollContainer>
     </section>

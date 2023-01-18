@@ -22,11 +22,11 @@ interface ProductsProps {
 }
 
 const MAX_RATING = 5
+
 const MIN_RATING = 1
 
 export default function Products({ products }: ProductsProps) {
   const dispatch = useDispatch()
-  const [fallbackImage, setFallbackImage] = useState('')
 
   function addItemToCart(index: number) {
     dispatch(addToCart(products[index]))
@@ -41,7 +41,7 @@ export default function Products({ products }: ProductsProps) {
       <h1 className="text-3xl font-bold pl-6 pt-6">All Products</h1>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product: any, index: number) => (
-          <div className="flex justify-center " key={index}>
+          <article className="flex justify-center " key={index}>
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
               <div className="w-full h-full flex justify-center bg-white">
                 <Image
@@ -84,7 +84,7 @@ export default function Products({ products }: ProductsProps) {
                 </button>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
       <Alert />

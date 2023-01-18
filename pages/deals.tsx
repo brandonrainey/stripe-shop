@@ -7,6 +7,7 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import Alert from '../components/Alert'
 
 const MAX_RATING = 5
+
 const MIN_RATING = 1
 
 interface DealsProps {
@@ -26,16 +27,13 @@ interface DealsProps {
 
 export default function Deals({ products }: DealsProps) {
   const dispatch = useDispatch()
+
   const deals = useSelector(selectDealItems)
 
   function addItemToCart(index: number) {
     dispatch(addToCart(deals[index]))
     dispatch(setOpenAlert(true))
   }
-
-  
-
-  //
 
   return (
     <div>
