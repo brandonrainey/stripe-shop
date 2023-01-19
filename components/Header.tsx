@@ -82,7 +82,7 @@ export default function Header({ products }: HeaderProps) {
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
-        <h1 className="sm:text-3xl text-xl text-center font-semibold cursor-pointer">
+        <h1 className="sm:text-3xl text-xl text-center font-semibold cursor-pointer" data-testid='12'>
           My Shop
         </h1>
       </div>

@@ -18,7 +18,7 @@ export default function Orders({ orders }: OrdersProps) {
       <Header products={undefined!} />
       <h1
         className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${
-          orders.length == 0 ? 'hidden' : ''
+          orders?.length == 0 ? 'hidden' : ''
         }`}
       >
         Your Orders
@@ -27,7 +27,7 @@ export default function Orders({ orders }: OrdersProps) {
         <div className="bg-[#f6f6f6] h-24 w-11/12 sm:w-3/4 text-lg sm:text-xl flex items-center justify-center self-center shadow-lg">
           <p>Please Sign In to view your orders.</p>
         </div>
-      ) : orders.length == 0 ? (
+      ) : orders?.length == 0 ? (
         <p
           className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow `}
         >
