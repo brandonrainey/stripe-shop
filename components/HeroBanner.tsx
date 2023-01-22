@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import BannerImage from '../public/hero-image.png'
 
 export default function HeroBanner() {
   const router = useRouter()
@@ -17,7 +18,7 @@ export default function HeroBanner() {
         Shop Products
       </button>
       <Image
-        src={'/hero-image.png'}
+        src={BannerImage}
         fill
         alt="hero image"
         className="object-cover"

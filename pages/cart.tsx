@@ -76,7 +76,7 @@ export default function Cart({ products }: CartProps) {
       >
         Your Cart
       </h1>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4" data-testid='cart-container'>
         {items.map((item: any, index: number) => (
           <div
             className="flex flex-col sm:flex-row gap-2 items-center  justify-center border-b pb-2"

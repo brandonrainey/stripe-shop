@@ -87,12 +87,12 @@ export default function Header({ products }: HeaderProps) {
         </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
-        <p
+        <a
           className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]"
           onClick={() => router.push('/Products')}
         >
           Shop Products
-        </p>
+        </a>
         <div
           className="lg:flex  items-center relative cursor-pointer hidden "
           onClick={() => setOpenDropdown(!openDropdown)}
@@ -104,18 +104,19 @@ export default function Header({ products }: HeaderProps) {
           <Dropdown openDropdown={openDropdown} />
         </div>
 
-        <p
+        <a
           className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1]"
           onClick={() => router.push('/deals')}
+          data-testid='deals-link'
         >
           Deals
-        </p>
-        <p
+        </a>
+        <a
           className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]"
           onClick={() => router.push('/orders')}
         >
           Orders
-        </p>
+        </a>
       </nav>
       <div className="relative w-1/3">
         <input
@@ -172,6 +173,7 @@ export default function Header({ products }: HeaderProps) {
       <div
         className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer"
         onClick={() => router.push('/cart')}
+        data-testid='cart'
       >
         <span
           className={`absolute bg-[#050217] text-white text-sm text-center px-1 rounded-full -top-2 sm:right-9 left-3 min-w-[20px] ${

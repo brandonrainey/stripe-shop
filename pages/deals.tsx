@@ -39,7 +39,7 @@ export default function Deals({ products }: DealsProps) {
     <div>
       <Header products={products} />
       <h1 className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</h1>
-      <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" data-testid='deals-list'>
         {deals.map((product: any, index: number) => (
           <div className="flex justify-center " key={index}>
             <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">

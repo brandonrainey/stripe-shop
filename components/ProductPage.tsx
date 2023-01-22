@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart, setOpenAlert } from '../slices/cartSlice'
 
 
+
 interface ProductPageProps {
   products: {
     category: string
@@ -53,7 +54,7 @@ export default function ProductPage({
             alt="product image"
             placeholder="blur"
             blurDataURL={`/loading-icon.gif`}
-            style={{}}
+            priority={true}
           ></Image>
         </div>
 

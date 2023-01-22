@@ -1,10 +1,30 @@
 import { test, expect } from '@playwright/test';
 
 test('practice test', async ({ page }) => {
-    await page.goto('https://stripe-shop.netlify.app/')
+    await page.goto('/')
 
     const header = page.getByRole('heading', { name: 'My Shop'})
 
     await expect(header).toHaveText('My Shop')
     
+})
+
+test('cart is empty on initial click', async ({ page }) => {
+    await page.goto('/')
+
+    await page.getByTestId('cart').click()
+
+    const cart = page.getByTestId('cart-container')
+
+    await expect(cart).toHaveCount(0)
+})
+
+test('check if deals page has items', async ({ page }) => {
+    await page.goto('/')
+
+    await page.getByTestId('deals-link').click()
+
+    const deals = page.getByTestId('deals-list')
+
+    await expect(deals).toHaveCount(5)
 })
