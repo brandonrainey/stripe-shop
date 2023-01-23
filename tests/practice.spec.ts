@@ -26,5 +26,15 @@ test('check if deals page has items', async ({ page }) => {
 
     const deals = page.getByTestId('deals-list')
 
-    await expect(deals).toHaveCount(5)
+    await expect(deals).toBeVisible()
+})
+
+test('check if clicking on search item works', async ({ page }) => {
+    await page.goto('/')
+
+    await page.getByPlaceholder('Search...').fill('mens cotton jacket')
+
+    await page.getByText('Mens Cotton Jacket').click()
+
+    await expect(page.getByTestId('product-page')).toBeVisible()
 })

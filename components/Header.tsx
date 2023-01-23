@@ -125,6 +125,7 @@ export default function Header({ products }: HeaderProps) {
           onChange={handleChange}
           disabled={products == undefined ? true : false}
           aria-label='search bar'
+          placeholder='Search...'
         ></input>
         {searchInput != '' ? (
           <button

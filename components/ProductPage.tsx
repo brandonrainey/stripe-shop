@@ -44,7 +44,7 @@ export default function ProductPage({
   }
 
   return (
-    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center ">
+    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center " data-testid='product-page'>
       <div className="flex md:flex-row flex-col bg-white h-[800px] md:h-1/2 w-full md:w-2/3 mt-24 md:mt-40 relative items-center rounded-lg">
         <div className="h-[500px] w-full sm:w-[500px] relative">
           <Image
