@@ -8,13 +8,13 @@ export default function OrdersSkeleton() {
       >
         Your Orders
       </h1>
-    
-        {Array(3)
+
+      {Array(3)
         .fill(undefined)
         .map((_, index) => (
           <article
-            className=" flex flex-col w-11/12 sm:w-3/4 h-62 border shadow-lg rounded-lg self-center animate-pulse
-        "
+            className=" flex flex-col w-11/12 sm:w-3/4 h-62 border shadow-lg rounded-lg self-center animate-pulse"
+            key={index}
           >
             <div className="flex w-full h-20 bg-[#f6f6f6] p-1 sm:px-2 relative ">
               <div className="flex flex-col mr-4 sm:mr-12 self-center gap-1">
@@ -40,7 +40,5 @@ export default function OrdersSkeleton() {
           </article>
         ))}
     </div>
-      
-   
   )
 }
