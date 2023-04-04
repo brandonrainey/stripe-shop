@@ -17,27 +17,27 @@ export default function LoadingHeader() {
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
         <h1
-          className="sm:text-3xl text-xl text-center font-semibold cursor-pointer"
+          className="sm:text-4xl text-xl text-center font-semibold cursor-pointer"
           data-testid="12"
         >
           My Shop
         </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
-        <p className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]">
+        <p className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1] text-lg">
           Shop Products
         </p>
         <div className="lg:flex  items-center relative cursor-pointer hidden ">
-          <p className=" font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]">
+          <p className=" font-semibold p-1 rounded-lg hover:bg-[#f3f1f1] text-lg">
             Categories
           </p>
           <ChevronDownIcon className="h-5" />
         </div>
 
-        <p className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1]">
+        <p className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1] text-lg">
           Deals
         </p>
-        <p className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]">
+        <p className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#f3f1f1] text-lg">
           Orders
         </p>
       </nav>
