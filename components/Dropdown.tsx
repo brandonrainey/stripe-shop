@@ -10,32 +10,32 @@ export default function Dropdown({ openDropdown }: DropdownProps) {
 
   return openDropdown ? (
     <nav
-      className={`absolute z-30  shadow-lg bg-white w-28  top-8 right-0 rounded`}
+      className={`absolute z-30  shadow-lg bg-white w-full  top-8 right-0 rounded`}
     >
       <ul className="flex flex-col items-center h-full">
         <li
-          className="w-full p-1 border-b border-t text-[0.95rem] rounded hover:bg-slate-200"
+          className="w-full p-1 border-b border-t text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
           onClick={() => router.push('/mens')}
         >
-          mens
+          Mens
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-slate-200"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
           onClick={() => router.push('/womens')}
         >
-          womens
+          Womens
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-slate-200"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
           onClick={() => router.push('/jewelery')}
         >
-          jewelery
+          Jewelery
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-slate-200"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
           onClick={() => router.push('/electronics')}
         >
-          electronics
+          Electronics
         </li>
       </ul>
     </nav>

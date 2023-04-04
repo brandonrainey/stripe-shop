@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import BannerImage from '../public/hero-image.png'
+import BannerImage from '../public/banner-3.webp'
 
 export default function HeroBanner() {
   const router = useRouter()
   return (
-    <div className="w-full h-[300px] sm:h-[500px] relative overflow-hidden">
+    <div className="w-full h-[300px] sm:h-[700px] relative overflow-hidden">
       <h1 className="absolute w-[400px] lg:w-[600px] z-30 text-3xl md:text-4xl lg:text-5xl xl:text-6xl top-4 lg:top-32 xl:top-48 md:top-24 lg:-right-20 xl:right-20 md:right-0 -right-28 font-semibold text-white drop-shadow-lg">
         Shopping And Department Store.
       </h1>
@@ -21,7 +21,8 @@ export default function HeroBanner() {
         src={BannerImage}
         fill
         alt="hero image"
-        className="object-cover"
+        className="object-cover object-center "
+        
         priority={true}
       />
     </div>

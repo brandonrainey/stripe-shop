@@ -82,13 +82,13 @@ export default function Header({ products }: HeaderProps) {
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
-        <h1 className="sm:text-3xl text-xl text-center font-semibold cursor-pointer" data-testid='12'>
+        <h1 className="sm:text-4xl text-xl text-center font-semibold cursor-pointer" data-testid='12'>
           My Shop
         </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
         <a
-          className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#f3f1f1]"
+          className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
           onClick={() => router.push('/Products')}
         >
           Shop Products
@@ -97,7 +97,7 @@ export default function Header({ products }: HeaderProps) {
           className="lg:flex  items-center relative cursor-pointer hidden "
           onClick={() => setOpenDropdown(!openDropdown)}
         >
-          <p className=" font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]">
+          <p className=" font-semibold p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg">
             Categories
           </p>
           <ChevronDownIcon className="h-5" />
@@ -105,14 +105,14 @@ export default function Header({ products }: HeaderProps) {
         </div>
 
         <a
-          className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#f3f1f1]"
+          className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
           onClick={() => router.push('/deals')}
           data-testid='deals-link'
         >
           Deals
         </a>
         <a
-          className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#f3f1f1]"
+          className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
           onClick={() => router.push('/orders')}
         >
           Orders
@@ -120,7 +120,7 @@ export default function Header({ products }: HeaderProps) {
       </nav>
       <div className="relative w-1/3">
         <input
-          className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#f3f1f1] hover:bg-[#e8e5e5]"
+          className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#1a76ff0d] hover:bg-[#e8e5e5]"
           value={searchInput}
           onChange={handleChange}
           disabled={products == undefined ? true : false}
@@ -133,7 +133,7 @@ export default function Header({ products }: HeaderProps) {
             onClick={() => setSearchInput('')}
             aria-label='close'
           >
-            <XMarkIcon className="h-5 " />
+            <XMarkIcon className="h-5 hover:bg-[#ddddeb] rounded-lg" />
           </button>
         ) : null}
         <button className="absolute right-2 top-1" aria-label='search icon'>

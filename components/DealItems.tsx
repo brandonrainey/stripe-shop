@@ -131,15 +131,15 @@ export default function DealItems({ products }: ProductsProps) {
   }, [])
 
   return (
-    <section className="w-full mt-12 flex flex-col mb-4">
-      <h1 className="text-2xl font-semibold ml-12">Best Deals For You</h1>
+    <section className="w-full mt-12 flex flex-col mb-4 ">
+      <h1 className="text-2xl sm:text-3xl font-semibold ml-12">Best Deals For You</h1>
       <ScrollContainer
-        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show"
+        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show px-4"
         hideScrollbars={false}
       >
         {activeDealItems.map((item: any, index: number) => (
           <article
-            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] "
+            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] shadow-xl"
             key={index}
           >
             <Image
