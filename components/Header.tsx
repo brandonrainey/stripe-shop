@@ -68,7 +68,7 @@ export default function Header({ products }: HeaderProps) {
   }
 
   return (
-    <header className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
+    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow">
       {openProductPage ? (
         <ProductPage
           products={products}

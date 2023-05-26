@@ -42,7 +42,7 @@ export default function Deals({ products }: DealsProps) {
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" data-testid='deals-list'>
         {deals.map((product: any, index: number) => (
           <div className="flex justify-center " key={index}>
-            <div className="flex flex-col  w-full h-96 gap-1  pb-1 mt-8 rounded-xl self-center justify-end ">
+            <div className="flex flex-col  w-full h-96 gap-1 mt-8 rounded-xl self-center justify-end shadow-xl">
               <div className="w-full h-full flex justify-center bg-white">
                 <Image
                   src={product.image}
@@ -52,7 +52,7 @@ export default function Deals({ products }: DealsProps) {
                   className="self-center w-auto h-auto"
                 />
               </div>
-              <div className="flex flex-col bg-[#f6f6f6] p-1 rounded-lg">
+              <div className="flex flex-col bg-[#1a76ff0d] p-1 rounded-lg">
                 <div className="flex w-full  ">
                   <p className="font-semibold text-medium mr-6">
                     {product.title}

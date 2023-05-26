@@ -92,7 +92,7 @@ export default function Cart({ products }: CartProps) {
                   className="self-center min-w-[80px] w-auto h-auto"
                 />
               </div>
-              <div className="flex flex-col w-3/4 sm:w-full bg-[#f6f6f6] p-1 rounded-lg sm:h-40 ">
+              <div className="flex flex-col w-3/4 sm:w-full bg-[#1a76ff0d] p-1 rounded-lg sm:h-40 shadow-xl">
                 <div className="flex w-full">
                   <p className="font-semibold text-medium mr-6">{item.title}</p>
                   <p className="ml-auto text-2xl font-bold">
