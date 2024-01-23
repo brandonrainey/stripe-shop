@@ -27,7 +27,6 @@ export default function Home({ products, error }: ProductsProps) {
       <Head>
         <title>Stripe-Shop</title>
         <meta name="description" content="ecommerce stripe shop" />
-        <link rel='preload' href='/banner-3-crop.webp' as='image' />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
       </Head>
