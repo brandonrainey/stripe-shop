@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function OrdersSkeleton() {
   return (
-    <div className="w-full flex flex-col justify-center items-center gap-4">
+    <div className="w-full flex flex-col justify-center items-center gap-4 font-NotoSans">
       <h1
         className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-2 self-start`}
       >

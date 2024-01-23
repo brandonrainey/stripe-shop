@@ -3,7 +3,7 @@ import React from 'react'
 export default function ProductsSkeleton() {
   return (
     <div>
-      <h1 className="text-3xl font-bold pl-6 pt-6">All Products</h1>
+      <h1 className="text-3xl font-bold pl-6 pt-6 font-NotoSans">All Products</h1>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {Array(20)
           .fill(undefined)

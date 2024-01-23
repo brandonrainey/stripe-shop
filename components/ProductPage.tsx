@@ -44,7 +44,7 @@ export default function ProductPage({
   }
 
   return (
-    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center " data-testid='product-page'>
+    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center font-NotoSans" data-testid='product-page'>
       <div className="flex md:flex-row flex-col bg-white h-[800px] md:h-1/2 w-full md:w-2/3 mt-24 md:mt-32 relative items-center rounded-lg shadow-xl">
         <div className="h-[500px] w-full sm:w-[500px] relative">
           <Image
@@ -58,7 +58,7 @@ export default function ProductPage({
           ></Image>
         </div>
 
-        <div className="w-full flex flex-col h-full justify-center gap-y-12 bg-[#1a76ff0d] rounded-lg p-2">
+        <div className="w-full flex flex-col h-full justify-center gap-y-12 bg-[#b6cff52f] rounded-lg p-2">
           <div className="flex flex-col  rounded-lg p-1">
             <p className="text-2xl font-semibold self-start mb-4">
               {products[productId].title}

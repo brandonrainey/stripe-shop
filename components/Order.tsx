@@ -36,7 +36,7 @@ export default function Order({ order }: OrderProp) {
       </div>
 
       <ScrollContainer
-        className="flex p-2 px-4 gap-8 sm:h-44 h-32 items-center overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+        className="flex p-2 px-4 gap-8 sm:h-44 h-32 items-center bg-white overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
         hideScrollbars={false}
       >
         {order.images.map((image: string, index: number) => (

@@ -68,7 +68,7 @@ export default function Header({ products }: HeaderProps) {
   }
 
   return (
-    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow">
+    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow bg-slate-100 font-NotoSans">
       {openProductPage ? (
         <ProductPage
           products={products}
@@ -82,14 +82,14 @@ export default function Header({ products }: HeaderProps) {
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
         </div>
-        <h1 className="sm:text-4xl text-xl text-center font-semibold cursor-pointer" data-testid='12'>
-          My Shop
+        <h1 className="sm:text-4xl text-xl text-center font-semibold cursor-pointer font-NotoSans" data-testid='12'>
+          Stripe Shop
         </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
         <a
-          className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
-          onClick={() => router.push('/Products')}
+          className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#4b88c517] text-lg"
+          onClick={() => router.push('/products')}
         >
           Shop Products
         </a>
@@ -97,7 +97,7 @@ export default function Header({ products }: HeaderProps) {
           className="lg:flex  items-center relative cursor-pointer hidden "
           onClick={() => setOpenDropdown(!openDropdown)}
         >
-          <p className=" font-semibold p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg">
+          <p className=" font-semibold p-1 rounded-lg hover:bg-[#4b88c517] text-lg">
             Categories
           </p>
           <ChevronDownIcon className="h-5" />
@@ -105,14 +105,14 @@ export default function Header({ products }: HeaderProps) {
         </div>
 
         <a
-          className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
+          className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#4b88c517] text-lg"
           onClick={() => router.push('/deals')}
           data-testid='deals-link'
         >
           Deals
         </a>
         <a
-          className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#1a76ff0d] text-lg"
+          className="hidden lg:block cursor-pointer font-semibold p-1 rounded-lg hover:bg-[#4b88c517] text-lg"
           onClick={() => router.push('/orders')}
         >
           Orders
@@ -120,7 +120,7 @@ export default function Header({ products }: HeaderProps) {
       </nav>
       <div className="relative w-1/3">
         <input
-          className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#1a76ff0d] hover:bg-[#e8e5e5]"
+          className="w-full min-w-[80px] focus:outline-none rounded-2xl py-1 px-2 bg-[#4b88c517] hover:bg-[#e8e5e5]"
           value={searchInput}
           onChange={handleChange}
           disabled={products == undefined ? true : false}

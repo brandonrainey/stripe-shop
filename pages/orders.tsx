@@ -16,7 +16,7 @@ export default function Orders({ orders }: OrdersProps) {
   const session = useSession()
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-slate-100 font-NotoSans">
       <Header products={undefined!} />
       <h1
         className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${

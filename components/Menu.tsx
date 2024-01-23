@@ -16,7 +16,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
   const [openCategories, setOpenCategories] = useState(false)
 
   function handleBrowse() {
-    router.push('/Products')
+    router.push('/products')
     setOpen(!open)
   }
 
@@ -33,7 +33,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
 
   return (
     <div
-      className={`w-3/4 h-screen z-40 bg-white fixed top-0 flex flex-col shadow-lg transition-all duration-300 right-0 overflow-y-scroll scrollbar-hide ${
+      className={`w-3/4 h-screen z-40 bg-white fixed top-0 flex flex-col shadow-lg transition-all duration-300 right-0 overflow-y-scroll scrollbar-hide font-NotoSans ${
         open ? ' ' : 'w-0'
       }`}
     >

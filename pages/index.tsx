@@ -23,7 +23,7 @@ interface ProductsProps {
 
 export default function Home({ products, error }: ProductsProps) {
   return (
-    <div className="relative">
+    <div className="relative bg-slate-100 font-NotoSans">
       <Head>
         <title>Stripe-Shop</title>
         <meta name="description" content="ecommerce stripe shop" />

@@ -7,11 +7,12 @@ import { UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useSession } from 'next-auth/react'
 import React from 'react'
 
+
 export default function LoadingHeader() {
   const session = useSession()
 
   return (
-    <header className="flex sm:p-4 py-4 sm:px-1 w-full items-center justify-between shadow">
+    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow font-NotoSans">
       <div className="flex items-center gap-2">
         <div>
           <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
@@ -20,7 +21,7 @@ export default function LoadingHeader() {
           className="sm:text-4xl text-xl text-center font-semibold cursor-pointer"
           data-testid="12"
         >
-          My Shop
+          Stripe Shop
         </h1>
       </div>
       <nav className="flex lg:gap-6 items-center">
@@ -67,9 +68,11 @@ export default function LoadingHeader() {
         </p>
       </div>
       <div className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer">
-        <span
-          className={`absolute bg-[#050217] text-white text-sm text-center px-1 rounded-full -top-2 sm:right-9 left-3 min-w-[20px] `}
-        ></span>
+      <span
+          className={`absolute bg-[#050217] text-white text-sm text-center px-1 rounded-full -top-2 sm:right-9 left-3 min-w-[20px] filter blur-sm`}
+        >
+          0
+        </span>
         <ShoppingCartIcon className="h-6 w-6" />
         <p className="sm:block hidden font-semibold">Cart</p>
       </div>

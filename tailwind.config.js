@@ -14,6 +14,9 @@ module.exports = {
         'pos-0': '0% 0%',
         'pos-100': '100% 100%',
       },
+      fontFamily: {
+        NotoSans: ['Noto Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [

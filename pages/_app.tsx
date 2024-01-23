@@ -10,6 +10,7 @@ import OrdersSkeleton from '../components/OrdersSkeleton'
 import ProductsSkeleton from '../components/ProductsSkeleton'
 import CategorySkeleton from '../components/CategorySkeleton'
 
+
 export default function App({ Component, pageProps }: AppProps) {
   const { isPageLoading, pageUrl } = usePageLoading()
 
@@ -18,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {isPageLoading ? (
         <AuthProvider session={pageProps.session}>
           <LoadingHeader />
-          {pageUrl == '/Products' ? <ProductsSkeleton /> : null}
+          {pageUrl == '/products' ? <ProductsSkeleton /> : null}
           {pageUrl == '/orders' ? <OrdersSkeleton /> : null}
           {pageUrl == '/mens' ? <CategorySkeleton category={'Mens'} /> : null}
           {pageUrl == '/womens' ? (

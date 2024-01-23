@@ -17,7 +17,7 @@ export default function Categories() {
       <nav className="flex flex-wrap lg:flex-nowrap justify-between mt-8 gap-y-3">
         <div className="flex w-full justify-around ">
           <a
-            className="flex  flex-col  sm:h-72 w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#e9a317] via-[#855b0f] to-[#e9a317] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500  justify-around items-center cursor-pointer"
+            className="flex  flex-col p-2 sm:h-72 w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#e9a317] via-[#855b0f] to-[#e9a317] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500  justify-around items-center cursor-pointer"
             onClick={() => router.push('/mens')}
           >
             <p className="pb-2  text-white text-xl font-semibold">MENS</p>
@@ -30,7 +30,7 @@ export default function Categories() {
             />
           </a>
           <a
-            className="flex flex-col  sm:h-72 w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#dc3259] via-[#7d1b32] to-[#e3325b] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500  justify-around items-center cursor-pointer"
+            className="flex flex-col p-2 sm:h-72 w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#dc3259] via-[#7d1b32] to-[#e3325b] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500  justify-around items-center cursor-pointer"
             onClick={() => router.push('/womens')}
           >
             <p className="mt-2 text-white text-xl font-semibold">WOMENS</p>
@@ -46,7 +46,7 @@ export default function Categories() {
 
         <div className="flex w-full justify-around">
           <a
-            className="flex flex-col  sm:h-72  w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#15baa6] via-[#0c6e62] to-[#15baa6] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500 justify-around items-center cursor-pointer"
+            className="flex flex-col p-2 sm:h-72  w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#15baa6] via-[#0c6e62] to-[#15baa6] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500 justify-around items-center cursor-pointer"
             onClick={() => router.push('/jewelery')}
           >
             <p className="mt-2 text-white text-xl font-semibold">JEWERLY</p>
@@ -59,7 +59,7 @@ export default function Categories() {
             />
           </a>
           <a
-            className="flex flex-col  sm:h-72  w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#4611b8] via-[#250864] to-[#4611b8] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500 justify-around items-center cursor-pointer"
+            className="flex flex-col p-2 sm:h-72  w-40 sm:w-64 border rounded-lg bg-gradient-to-br from-[#4611b8] via-[#250864] to-[#4611b8] bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-500 justify-around items-center cursor-pointer"
             onClick={() => router.push('/electronics')}
           >
             <p className="mt-2 text-white text-xl font-semibold">ELECTRONICS</p>

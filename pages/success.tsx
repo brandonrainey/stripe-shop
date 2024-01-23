@@ -22,7 +22,7 @@ export default function Success({ products }: SuccessProps) {
   const router = useRouter()
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center bg-slate-100 font-NotoSans">
       <Header products={products} />
       <section className="flex flex-col w-3/4 sm:w-1/2 h-52 mt-12 justify-center bg-[#f6f6f6] rounded-lg shadow-lg p-1">
         <div className="flex items-center justify-center">

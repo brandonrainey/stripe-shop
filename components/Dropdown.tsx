@@ -14,25 +14,25 @@ export default function Dropdown({ openDropdown }: DropdownProps) {
     >
       <ul className="flex flex-col items-center h-full">
         <li
-          className="w-full p-1 border-b border-t text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
+          className="w-full p-1 border-b border-t text-[0.95rem] rounded hover:bg-[#4b88c517]"
           onClick={() => router.push('/mens')}
         >
           Mens
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#4b88c517]"
           onClick={() => router.push('/womens')}
         >
           Womens
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#4b88c517]"
           onClick={() => router.push('/jewelery')}
         >
           Jewelery
         </li>
         <li
-          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#1a76ff0d]"
+          className="w-full p-1 border-b text-[0.95rem] rounded hover:bg-[#4b88c517]"
           onClick={() => router.push('/electronics')}
         >
           Electronics

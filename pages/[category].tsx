@@ -62,14 +62,14 @@ export default function Category({ products }: ProductsProps) {
   }, [category])
 
   return (
-    <div>
+    <div className='bg-slate-100 font-NotoSans'>
       <Header products={products} />
       <h1 className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</h1>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categoryArray.map((product: any, index: number) => (
           <article className="flex justify-center " key={index}>
-            <div className="flex flex-col  w-full h-96 gap-1 mt-8 rounded-xl self-center justify-end shadow-xl">
-              <div className="w-full h-full flex justify-center bg-white">
+            <div className="flex flex-col  w-full h-full gap-1 mt-8 rounded-xl self-center justify-end shadow-xl bg-white">
+              <div className="w-full h-full flex justify-center bg-white rounded-xl">
                 <Image
                   src={product.image}
                   height={120}
@@ -77,10 +77,10 @@ export default function Category({ products }: ProductsProps) {
                   alt="product image"
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
-                  className="self-center w-auto h-auto"
+                  className="self-center w-auto h-auto "
                 />
               </div>
-              <div className="flex flex-col bg-[#1a76ff0d] p-1 rounded-lg">
+              <div className="flex flex-col bg-[#4b88c517] p-1 rounded-lg ">
                 <div className="flex w-full  ">
                   <p className="font-semibold text-medium mr-6">
                     {product.title}

@@ -139,18 +139,20 @@ export default function DealItems({ products }: ProductsProps) {
       >
         {activeDealItems.map((item: any, index: number) => (
           <article
-            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] shadow-xl"
+            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] shadow-xl bg-white"
             key={index}
           >
-            <Image
+            <div className='flex justify-center h-full w-full relative'>
+              <Image
               src={item.image}
-              height={120}
-              width={120}
+              fill
               alt="product image"
               placeholder="blur"
               blurDataURL="/loading-icon.gif"
-              className="self-center mb-auto mt-12 w-auto h-auto"
+              className="self-center mb-auto p-4 object-contain"
             />
+            </div>
+            
 
             <div className={`flex flex-col  rounded-lg p-1`}>
               <p className="font-semibold text-medium">{item.title}</p>

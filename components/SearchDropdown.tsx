@@ -52,7 +52,7 @@ export default function SearchDropdown({
 
   return (
     <nav
-      className={`absolute flex flex-col h-auto sm:w-full w-[300px] z-40 bg-white shadow-md border rounded-lg top-[32px] -right-20 sm:right-0  `}
+      className={`absolute flex flex-col h-auto sm:w-full w-[300px] z-40 bg-white shadow-md border rounded-lg top-[32px] -right-20 sm:right-0  font-NotoSans`}
     >
       {filteredProducts.map((item: any, index: number) => (
         <div

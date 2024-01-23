@@ -58,7 +58,7 @@ export default function Cart({ products }: CartProps) {
   }
 
   return (
-    <div>
+    <div className='bg-slate-100 font-NotoSans'>
       <Header products={products} />
       <p
         className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${
@@ -79,11 +79,11 @@ export default function Cart({ products }: CartProps) {
       <div className="flex flex-col gap-y-4" data-testid='cart-container'>
         {items.map((item: any, index: number) => (
           <div
-            className="flex flex-col sm:flex-row gap-2 items-center  justify-center border-b pb-2"
+            className="flex flex-col sm:flex-row gap-2 items-center  justify-center border-b py-2 bg-white"
             key={index}
           >
-            <div className="flex items-center grow">
-              <div className="w-1/2 h-full flex justify-center items-center bg-white px-2">
+            <div className="flex items-center grow ">
+              <div className="w-1/2 h-full flex justify-center items-center px-2 ">
                 <Image
                   src={item.image}
                   height={120}
@@ -92,7 +92,7 @@ export default function Cart({ products }: CartProps) {
                   className="self-center min-w-[80px] w-auto h-auto"
                 />
               </div>
-              <div className="flex flex-col w-3/4 sm:w-full bg-[#1a76ff0d] p-1 rounded-lg sm:h-40 shadow-xl">
+              <div className="flex flex-col w-3/4 sm:w-full bg-[#7195b817] p-1 rounded-lg sm:h-40 shadow-xl">
                 <div className="flex w-full">
                   <p className="font-semibold text-medium mr-6">{item.title}</p>
                   <p className="ml-auto text-2xl font-bold">
