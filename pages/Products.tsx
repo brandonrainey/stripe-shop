@@ -51,7 +51,7 @@ export default function Products({ products }: ProductsProps) {
                   alt="product image"
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
-                  className={`self-center w-auto h-auto ${product.id === 5 && 'h-[180px]'}`}
+                  className={`self-center w-auto h-auto `}
                   priority={true}
                 />
               </div>
