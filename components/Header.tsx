@@ -89,7 +89,7 @@ export default function Header({ products }: HeaderProps) {
       <nav className="flex lg:gap-6 items-center">
         <a
           className="font-semibold cursor-pointer text-center lg:block hidden p-1 rounded-lg hover:bg-[#4b88c517] text-lg"
-          onClick={() => router.push('/products')}
+          onClick={() => router.push('/Products')}
         >
           Shop Products
         </a>

@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {isPageLoading ? (
         <AuthProvider session={pageProps.session}>
           <LoadingHeader />
-          {pageUrl == '/products' ? <ProductsSkeleton /> : null}
+          {pageUrl == '/Products' ? <ProductsSkeleton /> : null}
           {pageUrl == '/orders' ? <OrdersSkeleton /> : null}
           {pageUrl == '/mens' ? <CategorySkeleton category={'Mens'} /> : null}
           {pageUrl == '/womens' ? (

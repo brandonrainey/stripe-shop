@@ -12,7 +12,7 @@ export default function HeroBanner() {
       </h1>
       <button
         className="absolute top-[250px] xl:top-[350px] lg:top-[300px] md:top-[250px] sm:top-[200px] right-4 xl:right-[300px] lg:right-[250px] md:right-[150px] sm:right-[75px]  z-30 w-32 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
-        onClick={() => router.push('/products')}
+        onClick={() => router.push('/Products')}
         aria-label='shop products'
       >
         Shop Products

@@ -16,7 +16,7 @@ export default function Menu({ open, setOpen }: MenuProps) {
   const [openCategories, setOpenCategories] = useState(false)
 
   function handleBrowse() {
-    router.push('/products')
+    router.push('/Products')
     setOpen(!open)
   }
 
