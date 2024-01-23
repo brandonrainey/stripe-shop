@@ -66,8 +66,7 @@ export default function Products({ products }: ProductsProps) {
                 <p className="text-xs line-clamp-2 ">{product.description}</p>
                 <div className="flex ">
                   {Array(
-                    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
-                      MIN_RATING
+                    4
                   )
                     .fill(undefined)
                     .map((_, index) => (

@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { store } from '../store'
 import { SessionProvider as AuthProvider } from 'next-auth/react'
-import React from 'react'
+import React, { Suspense } from 'react'
 import LoadingHeader from '../components/LoadingHeader'
 import { usePageLoading } from '../hooks/usePageLoading'
 import OrdersSkeleton from '../components/OrdersSkeleton'
@@ -38,7 +38,9 @@ export default function App({ Component, pageProps }: AppProps) {
       ) : (
         <AuthProvider session={pageProps.session}>
           <Provider store={store}>
-            <Component {...pageProps} />
+            
+              <Component {...pageProps} />
+            
           </Provider>
         </AuthProvider>
       )}
