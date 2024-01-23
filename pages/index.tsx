@@ -27,8 +27,7 @@ export default function Home({ products, error }: ProductsProps) {
       <Head>
         <title>Stripe-Shop</title>
         <meta name="description" content="ecommerce stripe shop" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+        
       </Head>
       {error ? (
         <div>Error fetching data from API</div>
