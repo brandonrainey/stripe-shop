@@ -22,7 +22,7 @@ export default function HeroBanner() {
         fill
         alt="hero image"
         className="object-cover object-center"
-        
+        placeholder="blur"
         priority={true}
       />
     </div>
