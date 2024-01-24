@@ -38,9 +38,9 @@ export default function App({ Component, pageProps }: AppProps) {
       ) : (
         <AuthProvider session={pageProps.session}>
           <Provider store={store}>
-          <Suspense fallback={<div>Loading...</div>}>
+          
               <Component {...pageProps} />
-              </Suspense>
+              
           </Provider>
         </AuthProvider>
       )}

@@ -51,7 +51,7 @@ export default function Products({ products }: ProductsProps) {
                   alt="product image"
                   placeholder="blur"
                   blurDataURL="/loading-icon.gif"
-                  className={`self-center w-auto h-auto `}
+                  className={`self-center w-auto h-auto ${product.id === 5 && 'h-[180px]'}`}
                   priority={true}
                 />
               </div>
@@ -65,8 +65,9 @@ export default function Products({ products }: ProductsProps) {
 
                 <p className="text-xs line-clamp-2 ">{product.description}</p>
                 <div className="flex ">
-                  {Array(
-                    4
+                {Array(
+                    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
+                      MIN_RATING
                   )
                     .fill(undefined)
                     .map((_, index) => (

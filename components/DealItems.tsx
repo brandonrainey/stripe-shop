@@ -131,21 +131,22 @@ export default function DealItems({ products }: ProductsProps) {
   }, [])
 
   return (
-    <section className="w-full mt-12 flex flex-col mb-4 ">
+    <section className="w-full mt-12 flex flex-col mb-4  ">
       <h1 className="text-2xl sm:text-3xl font-semibold ml-12">Best Deals For You</h1>
       <ScrollContainer
-        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show px-4"
+        className="flex w-full gap-x-6 pb-2 overflow-x-scroll scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-show px-4 "
         hideScrollbars={false}
       >
         {activeDealItems.map((item: any, index: number) => (
           <article
-            className="flex flex-col w-full h-[380px] gap-1 pb-1 mt-8 rounded-xl self-center justify-end min-w-[300px] shadow-xl bg-white"
+            className="flex flex-col w-full h-[380px] gap-1  mt-8 rounded-xl self-center justify-end min-w-[300px] shadow-xl bg-white "
             key={index}
           >
             <div className='flex justify-center h-full w-full relative'>
               <Image
               src={item.image}
               fill
+              sizes='100%'
               alt="product image"
               placeholder="blur"
               blurDataURL="/loading-icon.gif"
@@ -154,7 +155,7 @@ export default function DealItems({ products }: ProductsProps) {
             </div>
             
 
-            <div className={`flex flex-col  rounded-lg p-1`}>
+            <div className={`flex flex-col  rounded-lg p-1 `}>
               <p className="font-semibold text-medium">{item.title}</p>
               <p className="text-xs line-clamp-2">{item.description}</p>
               <div className="flex gap-x-2 items-center justify-center">

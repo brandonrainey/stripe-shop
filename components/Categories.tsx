@@ -11,7 +11,7 @@ export default function Categories() {
   
   return (
     <section className="w-full mt-10">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-center sm:text-start sm:ml-12">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-center sm:text-start sm:ml-12 ">
         Shop Our Top Categories
       </h1>
       <nav className="flex flex-wrap lg:flex-nowrap justify-between mt-8 gap-y-3">
