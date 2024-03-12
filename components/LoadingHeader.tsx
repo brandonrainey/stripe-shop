@@ -1,21 +1,16 @@
-import {
-  BuildingStorefrontIcon,
-  ChevronDownIcon,
-  MagnifyingGlassIcon,
-} from '@heroicons/react/24/solid'
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useSession } from 'next-auth/react'
 import React from 'react'
-
 
 export default function LoadingHeader() {
   const session = useSession()
 
   return (
-    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow font-NotoSans">
+    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow ">
       <div className="flex items-center gap-2">
         <div>
-          <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
+          <img src="/Icon.webp" alt="logo" className="h-8 w-8" />
         </div>
         <h1
           className="sm:text-4xl text-xl text-center font-semibold cursor-pointer"
@@ -68,7 +63,7 @@ export default function LoadingHeader() {
         </p>
       </div>
       <div className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer">
-      <span
+        <span
           className={`absolute bg-[#050217] text-white text-sm text-center px-1 rounded-full -top-2 sm:right-9 left-3 min-w-[20px] filter blur-sm`}
         >
           0

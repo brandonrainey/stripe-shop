@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { addToCart, setOpenAlert } from '../slices/cartSlice'
 
-
-
 interface ProductPageProps {
   products: {
     category: string
@@ -44,7 +42,10 @@ export default function ProductPage({
   }
 
   return (
-    <article className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center font-NotoSans" data-testid='product-page'>
+    <article
+      className="w-full h-[1500px] flex bg-black/50 absolute z-40 top-0 right-0 bottom-0 left-0 justify-center "
+      data-testid="product-page"
+    >
       <div className="flex md:flex-row flex-col bg-white h-[800px] md:h-1/2 w-full md:w-2/3 mt-24 md:mt-32 relative items-center rounded-lg shadow-xl">
         <div className="h-[500px] w-full sm:w-[500px] relative">
           <Image
@@ -77,7 +78,11 @@ export default function ProductPage({
           </div>
 
           <p className="text-3xl font-semibold">${products[productId].price}</p>
-          <button className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white" onClick={() => addItemToCart()} aria-label='add to cart'>
+          <button
+            className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
+            onClick={() => addItemToCart()}
+            aria-label="add to cart"
+          >
             Add to Cart
           </button>
         </div>
@@ -86,7 +91,6 @@ export default function ProductPage({
           onClick={() => setOpenProductPage(false)}
         />
       </div>
-      
     </article>
   )
 }

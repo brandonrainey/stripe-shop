@@ -6,8 +6,6 @@ import moment from 'moment'
 import { collection, doc, getDocs } from 'firebase/firestore'
 import Order from '../components/Order'
 
-
-
 interface OrdersProps {
   orders: unknown[]
 }
@@ -16,7 +14,7 @@ export default function Orders({ orders }: OrdersProps) {
   const session = useSession()
 
   return (
-    <div className="flex flex-col bg-slate-100 font-NotoSans">
+    <div className="flex flex-col bg-slate-100 ">
       <Header products={undefined!} />
       <h1
         className={`sm:text-3xl text-2xl pt-4 pl-4 font-bold mb-6 ${

@@ -22,7 +22,7 @@ export default function Success({ products }: SuccessProps) {
   const router = useRouter()
 
   return (
-    <div className="flex flex-col justify-center items-center bg-slate-100 font-NotoSans">
+    <div className="flex flex-col justify-center items-center bg-slate-100 ">
       <Header products={products} />
       <section className="flex flex-col w-3/4 sm:w-1/2 h-52 mt-12 justify-center bg-[#f6f6f6] rounded-lg shadow-lg p-1">
         <div className="flex items-center justify-center">
@@ -39,7 +39,7 @@ export default function Success({ products }: SuccessProps) {
         <button
           className="w-full p-1 mt-4 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
           onClick={() => router.push('/orders')}
-          aria-label='view orders'
+          aria-label="view orders"
         >
           View Orders
         </button>

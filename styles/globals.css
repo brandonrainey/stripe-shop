@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -13,14 +13,6 @@ body {
   background-color: rgb(241 245 249);
 
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background-color: #1f2937;
-    color: #fff;
-  }
-} */
 
 a {
   color: inherit;

@@ -23,11 +23,10 @@ interface ProductsProps {
 
 export default function Home({ products, error }: ProductsProps) {
   return (
-    <div className="relative  bg-slate-100 font-NotoSans">
+    <div className="relative  bg-slate-100 ">
       <Head>
         <title>Stripe-Shop</title>
         <meta name="description" content="ecommerce stripe shop" />
-        
       </Head>
       {error ? (
         <div>Error fetching data from API</div>

@@ -62,7 +62,7 @@ export default function Category({ products }: ProductsProps) {
   }, [category])
 
   return (
-    <div className='bg-slate-100 font-NotoSans'>
+    <div className="bg-slate-100 ">
       <Header products={products} />
       <h1 className="text-3xl font-bold pl-6 pt-6 capitalize">{category}</h1>
       <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -4,11 +4,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from '@heroicons/react/24/outline'
-import {
-  BuildingStorefrontIcon,
-  ChevronDownIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/solid'
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useSelector } from 'react-redux'
 import { selectItems } from '../slices/cartSlice'
@@ -33,6 +29,19 @@ interface HeaderProps {
   }[]
 }
 
+type Product = {
+  category: string
+  description: string
+  id: number
+  image: string
+  price: number
+  rating: {
+    count: number
+    rate: number
+  }
+  title: string
+}
+
 export default function Header({ products }: HeaderProps) {
   const items = useSelector(selectItems)
 
@@ -42,7 +51,7 @@ export default function Header({ products }: HeaderProps) {
 
   const [searchInput, setSearchInput] = useState('')
 
-  const [filteredProducts, setFilteredProducts] = useState<any>()
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
 
   const [open, setOpen] = useState(false)
 
@@ -52,8 +61,7 @@ export default function Header({ products }: HeaderProps) {
 
   const [productId, setProductId] = useState(0)
 
-
-  function handleChange(e: any) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchInput(e.target.value)
     const localSearch = e.target.value
     const copyArr = [...products]
@@ -68,7 +76,7 @@ export default function Header({ products }: HeaderProps) {
   }
 
   return (
-    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow bg-slate-100 font-NotoSans">
+    <header className="flex sm:p-4 py-4 sm:px-2 w-full items-center justify-between shadow bg-slate-100 ">
       {openProductPage ? (
         <ProductPage
           products={products}
@@ -80,9 +88,13 @@ export default function Header({ products }: HeaderProps) {
 
       <div className="flex items-center gap-2" onClick={() => router.push('/')}>
         <div>
-          <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" />
+          <img src="/Icon.webp" alt="logo" className="h-8 w-8" />
+          {/* <BuildingStorefrontIcon className="h-8 w-8 text-[#334990]" /> */}
         </div>
-        <h1 className="sm:text-4xl text-xl text-center font-semibold cursor-pointer font-NotoSans" data-testid='12'>
+        <h1
+          className="sm:text-4xl text-xl text-center font-semibold cursor-pointer "
+          data-testid="12"
+        >
           Stripe Shop
         </h1>
       </div>
@@ -107,7 +119,7 @@ export default function Header({ products }: HeaderProps) {
         <a
           className="hidden lg:block font-semibold cursor-pointer p-1 rounded-lg hover:bg-[#4b88c517] text-lg"
           onClick={() => router.push('/deals')}
-          data-testid='deals-link'
+          data-testid="deals-link"
         >
           Deals
         </a>
@@ -124,19 +136,19 @@ export default function Header({ products }: HeaderProps) {
           value={searchInput}
           onChange={handleChange}
           disabled={products == undefined ? true : false}
-          aria-label='search bar'
-          placeholder='Search...'
+          aria-label="search bar"
+          placeholder="Search..."
         ></input>
         {searchInput != '' ? (
           <button
             className="absolute top-2 right-9"
             onClick={() => setSearchInput('')}
-            aria-label='close'
+            aria-label="close"
           >
             <XMarkIcon className="h-5 hover:bg-[#ddddeb] rounded-lg" />
           </button>
         ) : null}
-        <button className="absolute right-2 top-1" aria-label='search icon'>
+        <button className="absolute right-2 top-1" aria-label="search icon">
           <MagnifyingGlassIcon className="h-6 w-6" />
         </button>
         {searchInput.length > 0 && filteredProducts != undefined ? (
@@ -174,7 +186,7 @@ export default function Header({ products }: HeaderProps) {
       <div
         className="flex gap-2 relative sm:pr-0 pr-2 cursor-pointer"
         onClick={() => router.push('/cart')}
-        data-testid='cart'
+        data-testid="cart"
       >
         <span
           className={`absolute bg-[#050217] text-white text-sm text-center px-1 rounded-full -top-2 sm:right-9 left-3 min-w-[20px] ${

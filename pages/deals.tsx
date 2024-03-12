@@ -36,10 +36,13 @@ export default function Deals({ products }: DealsProps) {
   }
 
   return (
-    <div className='bg-slate-100 font-NotoSans'>
+    <div className="bg-slate-100 ">
       <Header products={products} />
       <h1 className="text-3xl font-bold pl-6 pt-6 capitalize">Your Deals</h1>
-      <div className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" data-testid='deals-list'>
+      <div
+        className="w-full self-center gap-y-4 gap-x-4 px-4 grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        data-testid="deals-list"
+      >
         {deals.map((product: any, index: number) => (
           <div className="flex justify-center" key={index}>
             <div className="flex flex-col w-full h-96 gap-1 mt-8 rounded-xl self-center justify-end shadow-xl bg-white">
@@ -48,9 +51,10 @@ export default function Deals({ products }: DealsProps) {
                   src={product.image}
                   height={120}
                   width={100}
-                  
                   alt="product image"
-                  className={`self-center w-auto h-auto   ${product.id === 5 && 'h-[180px]'}`}
+                  className={`self-center w-auto h-auto   ${
+                    product.id === 5 && 'h-[180px]'
+                  }`}
                 />
               </div>
               <div className="flex flex-col bg-[#4b88c517] p-1 rounded-lg">
@@ -86,7 +90,7 @@ export default function Deals({ products }: DealsProps) {
                 <button
                   className=" w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                   onClick={() => addItemToCart(index)}
-                  aria-label='add to cart'
+                  aria-label="add to cart"
                 >
                   add to cart
                 </button>

@@ -48,7 +48,7 @@ export default function Cart({ products }: CartProps) {
   }
 
   const MAX_RATING = 5
-  
+
   const MIN_RATING = 1
 
   const dispatch = useDispatch()
@@ -58,7 +58,7 @@ export default function Cart({ products }: CartProps) {
   }
 
   return (
-    <div className='bg-slate-100 font-NotoSans'>
+    <div className="bg-slate-100 ">
       <Header products={products} />
       <p
         className={`bg-[#f6f6f6] h-24 flex justify-center items-center shadow ${
@@ -76,7 +76,7 @@ export default function Cart({ products }: CartProps) {
       >
         Your Cart
       </h1>
-      <div className="flex flex-col gap-y-4" data-testid='cart-container'>
+      <div className="flex flex-col gap-y-4" data-testid="cart-container">
         {items.map((item: any, index: number) => (
           <div
             className="flex flex-col sm:flex-row gap-2 items-center  justify-center border-b py-2 bg-white"
@@ -120,7 +120,7 @@ export default function Cart({ products }: CartProps) {
               <button
                 className=" w-auto sm:min-w-[140px]  p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white"
                 onClick={() => removeItemFromCart(item.id)}
-                aria-label='remove from cart'
+                aria-label="remove from cart"
               >
                 remove from cart
               </button>
@@ -143,7 +143,7 @@ export default function Cart({ products }: CartProps) {
           className={`${
             items.length === 0 ? 'hidden' : ''
           } mt-4 w-28 p-1 bg-white rounded-2xl self-center border-2 border-black font-semibold text-sm hover:bg-black hover:text-white`}
-          aria-label='checkout'
+          aria-label="checkout"
         >
           Checkout
         </button>
