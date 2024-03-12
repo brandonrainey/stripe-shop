@@ -1,10 +1,10 @@
 import { buffer } from 'micro'
 import * as admin from 'firebase-admin'
 import { checkCustomRoutes } from 'next/dist/lib/load-custom-routes'
-import config from '../../permissionConfig'
+import permissionConfig from '../../permissionConfig'
 
 //get connection to firebase from the backend
-const serviceAccount = require(config)
+const serviceAccount = require(permissionConfig)
 
 const app = !admin.apps.length
   ? admin.initializeApp({
