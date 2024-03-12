@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import BannerImage from '../public/canva.webp'
+import BannerImage from '../public/banner-3-crop.webp'
 
 export default function HeroBanner() {
   const router = useRouter()
