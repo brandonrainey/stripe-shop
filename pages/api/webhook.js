@@ -1,9 +1,10 @@
 import { buffer } from 'micro'
 import * as admin from 'firebase-admin'
 import { checkCustomRoutes } from 'next/dist/lib/load-custom-routes'
+import config from '../../permissionConfig'
 
 //get connection to firebase from the backend
-const serviceAccount = require('../../permissions.json')
+const serviceAccount = require(config)
 
 const app = !admin.apps.length
   ? admin.initializeApp({
@@ -16,7 +17,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET
 
 const fufillOrder = async (session) => {
-  console.log('fufilling order')
   return app
     .firestore()
     .collection('users')
@@ -30,7 +30,7 @@ const fufillOrder = async (session) => {
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
-      console.log(`SUCCESSl Order ${session.id} had been added to the DB`)
+      console.log(`SUCCESS Order ${session.id} had been added to the DB`)
     })
 }
 
